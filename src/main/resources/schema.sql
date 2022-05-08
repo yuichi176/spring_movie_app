@@ -1,0 +1,21 @@
+DROP TABLE IF EXISTS account;
+DROP TABLE IF EXISTS movie;
+DROP TABLE IF EXISTS zipcode;
+
+CREATE TABLE IF NOT EXISTS account(
+    user_id BIGINT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    user_name VARCHAR(255) NOT NULL,
+    password CHAR(60) NOT NULL,
+    role_id CHAR(1) DEFAULT 1 NOT NULL,
+    delete_flag BOOLEAN DEFAULT 0 NOT NULL
+    );
+
+CREATE TABLE IF NOT EXISTS movie(
+    movie_id BIGINT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    user_name VARCHAR(255) NOT NULL,
+    movie_name VARCHAR(255) NOT NULL,
+    add_date DATE NOT NULL,
+    movie_comment VARCHAR(255),
+    movie_eval INT,
+    delete_flag BOOLEAN DEFAULT 0 NOT NULL
+);

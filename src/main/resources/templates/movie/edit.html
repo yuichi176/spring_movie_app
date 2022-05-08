@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common/head :: head_fragment"></head>
+<body>
+    <header th:replace="common/home-header :: header_fragment"></header>
+    <h1>映画の編集</h1>
+    <form th:action="@{/movie/{movieId}/update(movieId=${movieId})}" method="post" th:object="${editForm}">
+        <p>鑑賞日</p>
+        <input type="date" th:value="*{addDate}" th:field="*{addDate}" th:errorclass="err" />
+        <p th:if="${#fields.hasErrors('addDate')}" th:errors="*{addDate}" th:errorclass="err" ></p>
+        <br />
+        <p>映画名</p>
+        <input type="text" th:value="*{movieName}" th:field="*{movieName}" th:errorclass="err" />
+        <p th:if="${#fields.hasErrors('movieName')}" th:errors="*{movieName}" th:errorclass="err" ></p>
+        <br />
+        <p>ひとこと</p>
+        <input type="text" th:value="*{movieComment}" th:field="*{movieComment}" th:errorclass="err" />
+        <br />
+        <p>評価</p>
+        <div class="evaluation">
+            <input id="star1" type="radio" th:field="*{movieEval}" value="5" />
+            <label for="star1">★</label>
+            <input id="star2" type="radio" th:field="*{movieEval}" value="4" />
+            <label for="star2">★</label>
+            <input id="star3" type="radio" th:field="*{movieEval}" value="3" />
+            <label for="star3">★</label>
+            <input id="star4" type="radio" th:field="*{movieEval}" value="2" />
+            <label for="star4">★</label>
+            <input id="star5" type="radio" th:field="*{movieEval}" value="1" />
+            <label for="star5">★</label>
+            <p th:if="${#fields.hasErrors('movieEval')}" th:errors="*{movieEval}" th:errorclass="err" ></p>
+        </div>
+        <input type="submit" value="編集">
+    </form>
+    <form th:action="@{/movie/{movieId}/delete(movieId=${movieId})}" method="post">
+        <input type="submit" value="削除">
+    </form>
+    <footer th:replace="common/footer :: footer_fragment"></footer>
+</body>
+</html>

@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common/head :: head_fragment"></head>
+<body>
+    <header th:replace="common/header :: header_fragment"></header>
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="ログアウト" />
+    </form>
+    <a th:href="@{/}">Top</a>
+    <footer th:replace="common/footer :: footer_fragment"></footer>
+</body>
+</html>

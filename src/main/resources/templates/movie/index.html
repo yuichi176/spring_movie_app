@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common/head :: head_fragment"></head>
+<body>
+    <header th:replace="common/home-header :: header_fragment"></header>
+    <h1>映画一覧</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>鑑賞日</th>
+                <th>タイトル</th>
+                <th>コメント</th>
+                <th>評価</th>
+            </tr>
+        </thead>
+        <tbody th:each="movie:${movies}">
+<!--            <a th:href="@{/movie/{movieId}/edit(movieId=${movie.movieId})}" class="movie-edit-link">-->
+                <tr th:if="${!#lists.isEmpty(movies)}" >
+                    <td th:text="${movie.addDate}"></td>
+                    <td th:text="${movie.movieName}"></td>
+                    <td th:text="${movie.movieComment}"></td>
+                    <td th:text="${movie.movieEval}"></td>
+                    <a th:href="@{/movie/{movieId}/edit(movieId=${movie.movieId})}" class="movie-edit-link">編集</a>
+                </tr>
+        </tbody>
+    </table>
+    <a th:href="@{/movie/add}">追加</a>
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="ログアウト" />
+    </form>
+    <footer th:replace="common/footer :: footer_fragment"></footer>
+    </body>
+</html>

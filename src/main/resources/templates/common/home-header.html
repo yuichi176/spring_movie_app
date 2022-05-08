@@ -1,0 +1,14 @@
+<header class="header" th:fragment="header_fragment">
+    <div class="header-wrapper">
+        <div class="header-container">
+            <p class="header-logo"><a th:href="@{/movie}">Movies</a></p>
+            <ul class="nav-global">
+<!--                <li class="nav-global-item" th:text="${userName}"></li>-->
+                <li class="nav-global-item">
+                    <form th:action="@{/logout}" method="post">
+                        <input type="submit" value="ログアウト" />
+                    </form>
+                </li>
+            </ul>
+        </div>
+</header>

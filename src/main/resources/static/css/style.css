@@ -1,0 +1,253 @@
+@charset "UTF-8";
+/*================================
+    Variables
+=================================*/
+/*====== カラーパレット ======*/
+/*================================
+    Functions
+=================================*/
+/*================================
+    General
+=================================*/
+body {
+  font-family: "ヒラギノ角ゴシック体", "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;
+  line-height: 1.75;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+  background: #F2F2F2;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.btn-wrap {
+  display: flex;
+  justify-content: center;
+}
+.btn-wrap a {
+  color: #000;
+  padding: 15px 60px;
+  border: 1px solid;
+  font-size: 15px;
+  letter-spacing: 0.1em;
+}
+
+.err {
+  color: red;
+}
+
+/*================================
+    header
+=================================*/
+header {
+  width: 100%;
+  height: 100px;
+  background: #fff;
+}
+header .header-wrapper {
+  padding-left: 150px;
+  padding-right: 150px;
+}
+header .header-wrapper .header-container {
+  display: flex;
+  justify-content: space-between;
+}
+header .header-wrapper .header-container .header-logo {
+  font-family: Helvetica;
+  font-weight: bold;
+  font-size: 30px;
+  margin-top: 30px;
+}
+header .header-wrapper .header-container .nav-global {
+  font-size: 15px;
+  display: flex;
+  margin-top: 45px;
+}
+header .header-wrapper .header-container .nav-global .nav-global-item {
+  padding-left: 50px;
+}
+header .header-wrapper .header-container .nav-global .nav-global-item input[type=submit] {
+  background: white;
+  border: none;
+  cursor: pointer;
+}
+
+/*================================
+    footer
+=================================*/
+footer {
+  width: 100%;
+  height: 220px;
+  background: #fff;
+}
+footer .footer-wrapper {
+  padding-top: 130px;
+  padding-bottom: 30px;
+}
+footer .footer-wrapper .footer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+footer .footer-wrapper .footer-container .footer-logo {
+  font-family: Helvetica;
+  font-weight: bold;
+  font-size: 25px;
+}
+footer .footer-wrapper .footer-container .footer-copyright {
+  font-size: 15px;
+}
+
+/*================================
+    index.html
+=================================*/
+.header-img-wrapper {
+  position: relative;
+  width: 100%;
+  height: 800px;
+}
+.header-img-wrapper .text-wrapper {
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  text-align: center;
+  color: white;
+  top: 35%;
+}
+.header-img-wrapper .text-wrapper h2 {
+  font-size: 60px;
+}
+.header-img-wrapper .text-wrapper h4 {
+  font-size: 40px;
+}
+.header-img-wrapper .img-wrapper {
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+}
+.header-img-wrapper .img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/*================================
+    login.html
+=================================*/
+.wide-form-wrapper {
+  margin: 80px auto;
+  width: 1000px;
+  height: 600px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 0 3px gray;
+}
+.wide-form-wrapper .wide-form-container {
+  display: flex;
+}
+.wide-form-wrapper .wide-form-container .wide-form-img {
+  width: 50%;
+}
+.wide-form-wrapper .wide-form-container .wide-form-content {
+  width: 50%;
+  box-sizing: border-box;
+  padding: 70px 30px;
+}
+.wide-form-wrapper .wide-form-container .wide-form-content h1 {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+.wide-form-wrapper .wide-form-container .wide-form-content section {
+  color: red;
+}
+.wide-form-wrapper .wide-form-container .wide-form-content p {
+  font-size: 15px;
+  font-family: Helvetica;
+  font-weight: lighter;
+  color: #7B7B7B;
+}
+.wide-form-wrapper .wide-form-container .wide-form-content input[type=text] {
+  width: 350px;
+  height: 40px;
+  border-radius: 3px;
+  border: 1px solid #7B7B7B;
+  padding: 4px 8px;
+  font-size: 18px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+.wide-form-wrapper .wide-form-container .wide-form-content input[type=password] {
+  width: 350px;
+  height: 40px;
+  border-radius: 3px;
+  border: 1px solid #7B7B7B;
+  padding: 4px 8px;
+  font-size: 18px;
+  margin-bottom: 80px;
+  box-sizing: border-box;
+}
+.wide-form-wrapper .wide-form-container .wide-form-content input[type=submit] {
+  font-family: Helvetica;
+  font-weight: bolder;
+  font-size: 20px;
+  width: 350px;
+  height: 50px;
+  background: #8686D1;
+  color: white;
+  border-radius: 3px;
+  border: none;
+  cursor: pointer;
+}
+
+/*================================
+    signup.html
+=================================*/
+/*================================
+    movie/index.html
+=================================*/
+/*================================
+    movie/add.html
+=================================*/
+.evaluation {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+}
+
+.evaluation input[type=radio] {
+  display: none;
+}
+
+.evaluation label {
+  position: relative;
+  padding: 10px 10px 0;
+  color: gray;
+  cursor: pointer;
+  font-size: 50px;
+}
+
+.evaluation label .text {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  text-align: center;
+  font-size: 12px;
+  color: gray;
+}
+
+.evaluation label:hover,
+.evaluation label:hover ~ label,
+.evaluation input[type=radio]:checked ~ label {
+  color: #ffcc00;
+}
+
+/*# sourceMappingURL=style.css.map */
