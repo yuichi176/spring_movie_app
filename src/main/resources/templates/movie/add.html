@@ -13,6 +13,12 @@
         <input type="text" th:field="*{movieName}" th:errorclass="err" />
         <p th:if="${#fields.hasErrors('movieName')}" th:errors="*{movieName}" th:errorclass="err" ></p>
         <br />
+        <p>ジャンル</p>
+        <select th:field="*{movieGenre}">
+            <option value="action">action</option>
+            <option value="SF">SF</option>
+            <option value="horror">horror</option>
+        </select>
         <p>ひとこと</p>
         <input type="text" th:field="*{movieComment}" th:errorclass="err" />
         <br />

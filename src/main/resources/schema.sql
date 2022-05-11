@@ -16,6 +16,7 @@ CREATE TABLE IF NOT EXISTS movie(
     movie_name VARCHAR(255) NOT NULL,
     add_date DATE NOT NULL,
     movie_comment VARCHAR(255),
-    movie_eval INT,
+    movie_eval INT NOT NULL,
+    movie_genre VARCHAR(255) NOT NULL,
     delete_flag BOOLEAN DEFAULT 0 NOT NULL
 );

@@ -11,6 +11,7 @@
         <result property="addDate" column="add_date" />
         <result property="movieComment" column="movie_comment" />
         <result property="movieEval" column="movie_eval" />
+        <result property="movieGenre" column="movie_genre" />
         <result property="deleteFlag" column="delete_flag" />
     </resultMap>
 
@@ -27,8 +28,8 @@
     </select>
 
     <insert id="add">
-        INSERT INTO movie (user_name, movie_name, add_date, movie_comment, movie_eval)
-        VALUES(#{userName}, #{movieName}, #{addDate}, #{movieComment}, #{movieEval})
+        INSERT INTO movie (user_name, movie_name, add_date, movie_comment, movie_eval, movie_genre)
+        VALUES(#{userName}, #{movieName}, #{addDate}, #{movieComment}, #{movieEval}, #{movieGenre})
     </insert>
 
     <update id="updateOne">
@@ -37,7 +38,8 @@
         movie_name = #{movieName},
         add_date = #{addDate},
         movie_comment = #{movieComment},
-        movie_eval = #{movieEval}
+        movie_eval = #{movieEval},
+        movie_genre = #{movieGenre}
         WHERE movie_id = #{movieId}
     </update>
 

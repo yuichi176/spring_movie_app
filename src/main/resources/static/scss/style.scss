@@ -4,7 +4,7 @@
 
 /*====== カラーパレット ======*/
 $back-ground-color: #F2F2F2; // 背景色
-$btn-color: #8686D1; // ボタン色
+$btn-color: #BFBFFF; // ボタン色
 
 $breakpoint-mobile: 520px;
 $content-width: 1200px;
@@ -186,15 +186,37 @@ footer {
 
   .wide-form-container {
     display: flex;
+    height: 100%;
 
     .wide-form-img {
+      position: relative;
       width: 50%;
+
+      img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+        border-radius: 20px 0 0 20px;
+      }
+
+      p {
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        top: 45%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-family: Helvetica;
+        color: white;
+        font-size: 40px;
+        font-weight: bold;
+      }
     }
 
     .wide-form-content {
       width: 50%;
       box-sizing: border-box;
-      padding: 70px 30px;
+      padding: 70px 0 70px 50px;
 
       h1 {
         font-size: 30px;
@@ -259,8 +281,23 @@ footer {
 /*================================
     movie/index.html
 =================================*/
-.movie-edit-link {
-  // display: block;
+tr {
+  position: relative;
+
+  .movie-edit-link {
+    width: 0;
+    min-width: 0;
+    border: 0;
+    padding: 0;
+
+    a {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+  }
 }
 
 /*================================

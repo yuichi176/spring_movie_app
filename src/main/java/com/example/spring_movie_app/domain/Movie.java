@@ -4,7 +4,6 @@ import com.example.spring_movie_app.form.MovieForm;
 
 import java.sql.Date;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 
 /**
  * 映画情報を表すドメインオブジェクト
@@ -35,6 +34,10 @@ public class Movie {
      */
     private Integer movieEval;
     /**
+     * 映画ジャンル
+     */
+    private String movieGenre;
+    /**
      * 削除フラグ
      */
     private boolean deleteFlag;
@@ -61,6 +64,10 @@ public class Movie {
 
     public Integer getMovieEval() {
         return movieEval;
+    }
+
+    public String getMovieGenre() {
+        return movieGenre;
     }
 
     public boolean isDeleteFlag() {
@@ -91,11 +98,13 @@ public class Movie {
         this.movieEval = movieEval;
     }
 
+    public void setMovieGenre(String movieGenre) {
+        this.movieGenre = movieGenre;
+    }
+
     public void setDeleteFlag(boolean deleteFlag) {
         this.deleteFlag = deleteFlag;
     }
-
-
 
     public String dateToString(Date date) {
         return new SimpleDateFormat("yyyy-MM-dd").format(date);
@@ -111,6 +120,7 @@ public class Movie {
         movieForm.setMovieName(this.movieName);
         movieForm.setMovieComment(this.movieComment);
         movieForm.setMovieEval(integerToString(this.movieEval));
+        movieForm.setMovieGenre(this.movieGenre);
         return movieForm;
     }
 }

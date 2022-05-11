@@ -1,13 +1,9 @@
 package com.example.spring_movie_app.form;
 
 import com.example.spring_movie_app.domain.Movie;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.PastOrPresent;
 import java.sql.Date;
-import java.time.LocalDateTime;
 
 public class MovieForm {
     /**
@@ -30,6 +26,12 @@ public class MovieForm {
     @NotEmpty(message = "評価を入力してください")
     private String movieEval;
 
+    /**
+     * 映画ジャンル
+     */
+    @NotEmpty(message = "ジャンルを入力してください")
+    private String movieGenre;
+
     public String getMovieName() {
         return movieName;
     }
@@ -44,6 +46,10 @@ public class MovieForm {
 
     public String  getMovieEval() {
         return movieEval;
+    }
+
+    public String getMovieGenre() {
+        return movieGenre;
     }
 
     public void setMovieName(String movieName) {
@@ -70,12 +76,17 @@ public class MovieForm {
         return Integer.parseInt(strEval);
     }
 
+    public void setMovieGenre(String movieGenre) {
+        this.movieGenre = movieGenre;
+    }
+
     public Movie toEntity() {
         Movie movie = new Movie();
         movie.setMovieName(this.movieName);
         movie.setAddDate(stringToDate(this.addDate));
         movie.setMovieComment(this.movieComment);
         movie.setMovieEval(stringToInteger(this.movieEval));
+        movie.setMovieGenre(this.movieGenre);
         return movie;
     }
 }
