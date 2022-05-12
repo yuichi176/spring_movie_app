@@ -27,12 +27,12 @@
         AND delete_flag = 0
     </select>
 
-    <insert id="add">
+    <insert id="add" parameterType="com.example.spring_movie_app.domain.Movie" useGeneratedKeys="true" keyProperty="movieId">
         INSERT INTO movie (user_name, movie_name, add_date, movie_comment, movie_eval, movie_genre)
         VALUES(#{userName}, #{movieName}, #{addDate}, #{movieComment}, #{movieEval}, #{movieGenre})
     </insert>
 
-    <update id="updateOne">
+    <update id="updateOne" parameterType="com.example.spring_movie_app.domain.Movie">
         UPDATE movie
         SET
         movie_name = #{movieName},
@@ -43,8 +43,12 @@
         WHERE movie_id = #{movieId}
     </update>
 
-    <delete id="deleteOne">
+    <delete id="deleteOne" parameterType="com.example.spring_movie_app.domain.Movie">
         DELETE FROM movie
         WHERE movie_id = #{movieId}
     </delete>
+
+<!--    <sql id="timestampVariable">-->
+<!--        <bind name="sysdate" value="@java.time.LocalDateTime@now()"/>-->
+<!--    </sql>-->
 </mapper>

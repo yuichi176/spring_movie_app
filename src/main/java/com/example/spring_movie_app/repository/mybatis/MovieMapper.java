@@ -13,7 +13,7 @@ import java.util.List;
 public interface MovieMapper {
     List<Movie> findAll(@Param("userName") String userName);
     Movie findOne(@Param("movieId") Long movieId);
-    void add(Movie movie);
-    void updateOne(Movie movie);
-    void deleteOne(Long userId);
+    int add(Movie movie);
+    int updateOne(Movie movie);
+    int deleteOne(Long userId);
 }
