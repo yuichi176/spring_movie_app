@@ -1,8 +1,8 @@
 package com.example.spring_movie_app.test;
 
 import com.example.spring_movie_app.domain.Account;
-import com.example.spring_movie_app.domain.RoleName;
-import com.example.spring_movie_app.service.account.AccountDetails;
+import com.example.spring_movie_app.security.RoleName;
+import com.example.spring_movie_app.security.AccountDetails;
 import org.junit.jupiter.api.extension.AfterEachCallback;
 import org.junit.jupiter.api.extension.BeforeEachCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;

@@ -1,16 +1,13 @@
-package com.example.spring_movie_app.service.account;
+package com.example.spring_movie_app.security;
 
 import com.example.spring_movie_app.domain.Account;
-import com.example.spring_movie_app.domain.RoleName;
 import com.example.spring_movie_app.repository.account.AccountRepository;
-import com.example.spring_movie_app.service.account.AccountDetails;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import javax.management.relation.Role;
 import java.util.List;
 
 @Service

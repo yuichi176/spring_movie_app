@@ -1,9 +1,8 @@
 package com.example.spring_movie_app.controller.movie;
 
-import com.example.spring_movie_app.domain.Account;
 import com.example.spring_movie_app.domain.Movie;
 import com.example.spring_movie_app.form.MovieForm;
-import com.example.spring_movie_app.service.account.AccountDetails;
+import com.example.spring_movie_app.security.AccountDetails;
 import com.example.spring_movie_app.service.movie.MovieService;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -12,7 +11,6 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.security.Principal;
 import java.util.List;
 
 

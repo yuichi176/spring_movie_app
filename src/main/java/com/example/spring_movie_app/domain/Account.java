@@ -1,5 +1,7 @@
 package com.example.spring_movie_app.domain;
 
+import com.example.spring_movie_app.security.RoleName;
+
 /**
  * ユーザ情報を表すドメインオブジェクト
  */

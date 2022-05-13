@@ -1,4 +1,4 @@
-package com.example.spring_movie_app.domain;
+package com.example.spring_movie_app.security;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
