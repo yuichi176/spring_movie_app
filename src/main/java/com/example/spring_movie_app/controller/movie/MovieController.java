@@ -19,10 +19,18 @@ import java.util.List;
 public class MovieController {
     private final MovieService movieService;
 
+    /**
+     * コンストラクタ
+     *
+     * @param movieService movieサービス
+     */
     public MovieController (MovieService movieService) {
         this.movieService = movieService;
     }
 
+    /**
+     * 映画一覧画面に遷移するコントローラメソッド
+     */
     @GetMapping
     public ModelAndView getIndex(@AuthenticationPrincipal AccountDetails accountDetails,
                                  ModelAndView modelAndView) {
@@ -34,6 +42,9 @@ public class MovieController {
         return modelAndView;
     }
 
+    /**
+     * 映画登録画面に遷移するコントローラメソッド
+     */
     @GetMapping("/add")
     public ModelAndView getAdd(ModelAndView modelAndView) {
         modelAndView.addObject("addForm", new MovieForm());
@@ -42,6 +53,9 @@ public class MovieController {
         return modelAndView;
     }
 
+    /**
+     * 映画登録を行うコントローラメソッド
+     */
     @PostMapping("/add")
     public ModelAndView postAdd(@AuthenticationPrincipal AccountDetails accountDetails,
                                 @ModelAttribute("addForm") @Validated MovieForm movieForm,
@@ -61,6 +75,9 @@ public class MovieController {
         return modelAndView;
     }
 
+    /**
+     * 映画編集画面に遷移するコントローラメソッド
+     */
     @GetMapping("/{movieId}/edit")
     public ModelAndView getEdit(@PathVariable("movieId") Long movieId,
                                 ModelAndView modelAndView) {
@@ -75,6 +92,9 @@ public class MovieController {
         return modelAndView;
     }
 
+    /**
+     * 映画編集を行うコントローラメソッド
+     */
     @PostMapping("/{movieId}/update")
     public ModelAndView update(@AuthenticationPrincipal AccountDetails accountDetails,
                                @PathVariable("movieId") Long movieId,
@@ -98,6 +118,9 @@ public class MovieController {
         return modelAndView;
     }
 
+    /**
+     * 映画削除を行うコントローラメソッド
+     */
     @PostMapping("/{movieId}/delete")
     public ModelAndView delete(@PathVariable("movieId") Long movieId,
                                ModelAndView modelAndView) {
