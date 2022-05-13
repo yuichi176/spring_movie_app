@@ -25,7 +25,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest(classes = SpringMovieAppApplication.class)
 @AutoConfigureMockMvc
-//@ExtendWith(SpringSecurityResource.class)
+@ExtendWith(SpringSecurityResource.class)
 public class MovieControllerTest {
 
     @MockBean
