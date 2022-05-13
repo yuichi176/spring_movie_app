@@ -14,9 +14,9 @@ public class Movie {
      */
     private Long movieId;
     /**
-     * ユーザ名
+     * ユーザID
      */
-    private String userName;
+    private Long userId;
     /**
      * 映画名
      */
@@ -46,8 +46,8 @@ public class Movie {
         return movieId;
     }
 
-    public String getUserName() {
-        return userName;
+    public Long getUserId() {
+        return userId;
     }
 
     public String getMovieName() {
@@ -78,8 +78,8 @@ public class Movie {
         this.movieId = movieId;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public void setMovieName(String movieName) {

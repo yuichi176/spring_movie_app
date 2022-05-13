@@ -40,7 +40,7 @@ public class MovieRepositoryImplTest {
     public void testFindAllWhenSuccess() {
 
         // setup 対象メソッドの理想的な振る舞いを定義
-        String input = "testUser";
+        Long input = 1L;
         List<Movie> findResult = new ArrayList<>();
         Movie movie = new Movie();
         findResult.add(movie);

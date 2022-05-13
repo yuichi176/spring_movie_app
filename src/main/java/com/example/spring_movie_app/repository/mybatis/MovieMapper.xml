@@ -6,7 +6,7 @@
 
     <resultMap id="Movie" type="com.example.spring_movie_app.domain.Movie" >
         <id property="movieId" column="movie_id" />
-        <result property="userName" column="user_name" />
+        <result property="userId" column="user_id" />
         <result property="movieName" column="movie_name" />
         <result property="addDate" column="add_date" />
         <result property="movieComment" column="movie_comment" />
@@ -17,7 +17,7 @@
 
     <select id="findAll" resultMap="Movie">
         SELECT * FROM movie
-        WHERE user_name = #{userName}
+        WHERE user_id = #{userId}
         AND delete_flag = 0
     </select>
 
@@ -28,8 +28,8 @@
     </select>
 
     <insert id="add" parameterType="com.example.spring_movie_app.domain.Movie" useGeneratedKeys="true" keyProperty="movieId">
-        INSERT INTO movie (user_name, movie_name, add_date, movie_comment, movie_eval, movie_genre)
-        VALUES(#{userName}, #{movieName}, #{addDate}, #{movieComment}, #{movieEval}, #{movieGenre})
+        INSERT INTO movie (user_id, movie_name, add_date, movie_comment, movie_eval, movie_genre)
+        VALUES(#{userId}, #{movieName}, #{addDate}, #{movieComment}, #{movieEval}, #{movieGenre})
     </insert>
 
     <update id="updateOne" parameterType="com.example.spring_movie_app.domain.Movie">

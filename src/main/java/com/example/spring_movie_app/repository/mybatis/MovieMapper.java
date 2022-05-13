@@ -11,9 +11,14 @@ import java.util.List;
  */
 @Mapper
 public interface MovieMapper {
-    List<Movie> findAll(@Param("userName") String userName);
+
+    List<Movie> findAll(@Param("userId") Long userId);
+
     Movie findOne(@Param("movieId") Long movieId);
+
     int add(Movie movie);
+
     int updateOne(Movie movie);
+
     int deleteOne(Long userId);
 }

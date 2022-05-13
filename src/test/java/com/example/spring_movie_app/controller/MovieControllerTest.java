@@ -38,7 +38,7 @@ public class MovieControllerTest {
     public void testGetIndex() throws Exception {
 
         // setup
-        String input = "test";
+        Long input = 1L;
         Movie movie = new Movie();
         List<Movie> result = new ArrayList<>();
         result.add(movie);

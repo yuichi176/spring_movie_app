@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS account(
 
 CREATE TABLE IF NOT EXISTS movie(
     movie_id BIGINT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-    user_name VARCHAR(255) NOT NULL,
+    user_id BIGINT NOT NULL,
     movie_name VARCHAR(255) NOT NULL,
     add_date DATE NOT NULL,
     movie_comment VARCHAR(255),

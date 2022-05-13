@@ -26,9 +26,10 @@ public class MovieController {
     }
 
     @GetMapping
-    public ModelAndView getIndex(ModelAndView modelAndView, Principal principal) {
+    public ModelAndView getIndex(@AuthenticationPrincipal AccountDetails accountDetails,
+                                 ModelAndView modelAndView) {
         List<Movie> movies = null;
-        movies = this.movieService.findAll(principal.getName());
+        movies = this.movieService.findAll(accountDetails.getUserId());
         modelAndView.addObject("movies", movies);
 
         modelAndView.setViewName("movie/index");
@@ -44,15 +45,14 @@ public class MovieController {
     }
 
     @PostMapping("/add")
-    public ModelAndView postAdd(@AuthenticationPrincipal AccountDetails account,
+    public ModelAndView postAdd(@AuthenticationPrincipal AccountDetails accountDetails,
                                 @ModelAttribute("addForm") @Validated MovieForm movieForm,
                                 BindingResult result,
-                                Principal principal,
                                 ModelAndView modelAndView) {
         if(!result.hasErrors()) {
             // MovieFormオブジェクトからMovieオブジェクトへの変換
             Movie movie = movieForm.toEntity();
-            movie.setUserName(principal.getName());
+            movie.setUserId(accountDetails.getUserId());
             this.movieService.add(movie);
 
             modelAndView.setViewName("redirect:/movie");
@@ -78,16 +78,16 @@ public class MovieController {
     }
 
     @PostMapping("/{movieId}/update")
-    public ModelAndView update(@PathVariable("movieId") Long movieId,
+    public ModelAndView update(@AuthenticationPrincipal AccountDetails accountDetails,
+                               @PathVariable("movieId") Long movieId,
                                @ModelAttribute("editForm") @Validated MovieForm movieForm,
                                BindingResult result,
-                               Principal principal,
                                ModelAndView modelAndView) {
 
         if(!result.hasErrors()) {
             // MovieFormオブジェクトからMovieオブジェクトへの変換
             Movie movie = movieForm.toEntity();
-            movie.setUserName(principal.getName());
+            movie.setUserId(accountDetails.getUserId());
             movie.setMovieId(movieId);
             this.movieService.updateOne(movie);
 

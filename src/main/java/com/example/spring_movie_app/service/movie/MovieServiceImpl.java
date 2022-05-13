@@ -15,8 +15,8 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public List<Movie> findAll(String userName) {
-        return this.movieRepository.findAll(userName);
+    public List<Movie> findAll(Long userId) {
+        return this.movieRepository.findAll(userId);
     }
 
     @Override

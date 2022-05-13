@@ -16,10 +16,10 @@ public class MovieRepositoryImpl implements MovieRepository {
     }
 
     @Override
-    public List<Movie> findAll(String  userName) {
+    public List<Movie> findAll(Long userId) {
         List<Movie> movies = null;
         movies = this.sqlSessionTemplate
-                .getMapper(MovieMapper.class).findAll(userName);
+                .getMapper(MovieMapper.class).findAll(userId);
         return movies;
     }
 
