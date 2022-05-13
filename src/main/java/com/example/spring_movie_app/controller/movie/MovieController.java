@@ -1,8 +1,11 @@
 package com.example.spring_movie_app.controller.movie;
 
+import com.example.spring_movie_app.domain.Account;
 import com.example.spring_movie_app.domain.Movie;
 import com.example.spring_movie_app.form.MovieForm;
+import com.example.spring_movie_app.service.account.AccountDetails;
 import com.example.spring_movie_app.service.movie.MovieService;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
@@ -41,7 +44,8 @@ public class MovieController {
     }
 
     @PostMapping("/add")
-    public ModelAndView postAdd(@ModelAttribute("addForm") @Validated MovieForm movieForm,
+    public ModelAndView postAdd(@AuthenticationPrincipal AccountDetails account,
+                                @ModelAttribute("addForm") @Validated MovieForm movieForm,
                                 BindingResult result,
                                 Principal principal,
                                 ModelAndView modelAndView) {

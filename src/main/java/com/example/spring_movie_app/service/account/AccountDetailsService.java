@@ -18,11 +18,18 @@ public class AccountDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
+
         Account account = null;
+        //　ユーザ名でユーザ検索する
         account = accountRepository.findOne(userName);
         if(account == null) {
             throw new UsernameNotFoundException("ユーザIDは存在しません。");
         }
-        return new AccountDetails(account);
+
+        return new AccountDetails(
+                account.getUserId(),
+                account.getUserName(),
+                account.getPassword(),
+                account.getRoleName());
     }
 }
