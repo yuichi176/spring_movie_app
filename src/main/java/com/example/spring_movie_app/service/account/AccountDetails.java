@@ -1,8 +1,12 @@
 package com.example.spring_movie_app.service.account;
 
 import com.example.spring_movie_app.domain.RoleName;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.User;
+
+import java.util.Collection;
+import java.util.Collections;
 
 public class AccountDetails extends User {
 
@@ -20,20 +24,17 @@ public class AccountDetails extends User {
      * コンストラクタ
      * Spring Securityで認証するためのユーザ情報を設定する
      *
-     * @param userId     ユーザID
-     * @param userName   ユーザ名
-     * @param password   パスワード
-     * @param roleName   ロール
+     * @param userId        ユーザID
+     * @param userName      ユーザ名
+     * @param password      パスワード
+     * @param authorities   ロール情報
      */
     public AccountDetails(Long userId,
                           String userName,
                           String password,
-                          RoleName roleName
+                          Collection<? extends GrantedAuthority> authorities
                           ) {
-        super(userName, password,
-                AuthorityUtils.createAuthorityList(
-                        "ROLE_" + roleName.name())
-        );
+        super(userName, password, authorities);
         this.userId = userId;
         this.userName = userName;
     }
