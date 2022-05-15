@@ -1,2 +1,4 @@
-package com.example.spring_movie_app.validation;public interface SetGroup {
+package com.example.spring_movie_app.validation;
+
+public interface SetGroup {
 }
