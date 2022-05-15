@@ -1,6 +1,7 @@
 package com.example.spring_movie_app.form;
 
 import com.example.spring_movie_app.domain.Movie;
+import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotEmpty;
 import java.sql.Date;
@@ -9,27 +10,27 @@ public class MovieForm {
     /**
      * 映画名
      */
-    @NotEmpty(message = "映画名を入力してください")
+    @NotEmpty
     private String movieName;
     /**
      * 追加日時
      */
-    @NotEmpty(message = "鑑賞日を入力してください")
+    @NotEmpty
     private String addDate;
     /**
      * 映画コメント
      */
+    @Length(max = 200)
     private String movieComment;
     /**
      * 映画評価
      */
-    @NotEmpty(message = "評価を入力してください")
+    @NotEmpty
     private String movieEval;
-
     /**
      * 映画ジャンル
      */
-    @NotEmpty(message = "ジャンルを入力してください")
+    @NotEmpty
     private String movieGenre;
 
     public String getMovieName() {
