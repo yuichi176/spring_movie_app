@@ -188,7 +188,7 @@ footer .footer-wrapper .footer-container .footer-copyright {
 .wide-form-wrapper .wide-form-container .wide-form-content section {
   color: red;
 }
-.wide-form-wrapper .wide-form-container .wide-form-content p {
+.wide-form-wrapper .wide-form-container .wide-form-content p.form_name {
   font-size: 15px;
   font-family: Helvetica;
   font-weight: lighter;
