@@ -6,23 +6,26 @@
     <h1>映画の追加</h1>
     <form th:action="@{/movie/add}" method="post" th:object="${addForm}">
         <p>鑑賞日</p>
-        <input id="today" type="date" th:field="*{addDate}" th:errorclass="err" />
         <p th:if="${#fields.hasErrors('addDate')}" th:errors="*{addDate}" th:errorclass="err" ></p>
+        <input id="today" type="date" th:field="*{addDate}" th:errorclass="err" />
         <br />
         <p>映画名</p>
-        <input type="text" th:field="*{movieName}" th:errorclass="err" />
         <p th:if="${#fields.hasErrors('movieName')}" th:errors="*{movieName}" th:errorclass="err" ></p>
+        <input type="text" th:field="*{movieName}" th:errorclass="err" />
         <br />
         <p>ジャンル</p>
+        <p th:if="${#fields.hasErrors('movieGenre')}" th:errors="*{movieGenre}" th:errorclass="err" ></p>
         <select th:field="*{movieGenre}">
             <option value="action">action</option>
             <option value="SF">SF</option>
             <option value="horror">horror</option>
         </select>
         <p>ひとこと</p>
+        <p th:if="${#fields.hasErrors('movieComment')}" th:errors="*{movieComment}" th:errorclass="err" ></p>
         <input type="text" th:field="*{movieComment}" th:errorclass="err" />
         <br />
         <p>評価</p>
+        <p th:if="${#fields.hasErrors('movieEval')}" th:errors="*{movieEval}" th:errorclass="err" ></p>
         <div class="evaluation">
             <input id="star1" type="radio" th:field="*{movieEval}" value="5" />
             <label for="star1">★</label>
@@ -34,7 +37,6 @@
             <label for="star4">★</label>
             <input id="star5" type="radio" th:field="*{movieEval}" value="1" />
             <label for="star5">★</label>
-            <p th:if="${#fields.hasErrors('movieEval')}" th:errors="*{movieEval}" th:errorclass="err" ></p>
         </div>
         <input type="submit" value="追加">
     </form>
