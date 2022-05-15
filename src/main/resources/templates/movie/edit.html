@@ -6,23 +6,26 @@
     <h1>映画の編集</h1>
     <form th:action="@{/movie/{movieId}/update(movieId=${movieId})}" method="post" th:object="${editForm}">
         <p>鑑賞日</p>
-        <input type="date" th:value="*{addDate}" th:field="*{addDate}" th:errorclass="err" />
         <p th:if="${#fields.hasErrors('addDate')}" th:errors="*{addDate}" th:errorclass="err" ></p>
+        <input type="date" th:value="*{addDate}" th:field="*{addDate}" th:errorclass="err" />
         <br />
         <p>映画名</p>
-        <input type="text" th:value="*{movieName}" th:field="*{movieName}" th:errorclass="err" />
         <p th:if="${#fields.hasErrors('movieName')}" th:errors="*{movieName}" th:errorclass="err" ></p>
+        <input type="text" th:value="*{movieName}" th:field="*{movieName}" th:errorclass="err" />
         <br />
         <p>ジャンル</p>
+        <p th:if="${#fields.hasErrors('movieGenre')}" th:errors="*{movieGenre}" th:errorclass="err" ></p>
         <select th:field="*{movieGenre}">
             <option th:selected="*{movieGenre} == 'action'" value="action" >action</option>
             <option th:selected="*{movieGenre} == 'SF'" value="SF" >SF</option>
             <option th:selected="*{movieGenre} == 'horror'" value="horror" >horror</option>
         </select>
         <p>ひとこと</p>
+        <p th:if="${#fields.hasErrors('movieComment')}" th:errors="*{movieComment}" th:errorclass="err" ></p>
         <input type="text" th:value="*{movieComment}" th:field="*{movieComment}" th:errorclass="err" />
         <br />
         <p>評価</p>
+        <p th:if="${#fields.hasErrors('movieEval')}" th:errors="*{movieEval}" th:errorclass="err" ></p>
         <div class="evaluation">
             <input id="star1" type="radio" th:field="*{movieEval}" value="5" />
             <label for="star1">★</label>
@@ -36,7 +39,7 @@
             <label for="star5">★</label>
             <p th:if="${#fields.hasErrors('movieEval')}" th:errors="*{movieEval}" th:errorclass="err" ></p>
         </div>
-        <input type="submit" value="編集">
+        <input type="submit" value="更新">
     </form>
     <form th:action="@{/movie/{movieId}/delete(movieId=${movieId})}" method="post">
         <input type="submit" value="削除">
