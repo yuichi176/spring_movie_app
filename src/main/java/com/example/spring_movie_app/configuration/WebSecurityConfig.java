@@ -1,5 +1,6 @@
 package com.example.spring_movie_app.configuration;
 
+import com.example.spring_movie_app.security.CustomAuthenticationSuccessHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -12,6 +13,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
     // 静的リソースをSpring Securityの保護対象から外す
     @Override
     public void configure(WebSecurity web) throws Exception {
@@ -26,17 +28,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         // 認可
         // /loginのみ認可
         http.authorizeHttpRequests()
-                .antMatchers("/", "/login", "/signup").permitAll()
+                .antMatchers("/", "/login", "/signup").permitAll() // 全許可
                 .anyRequest().authenticated();
 
         // フォーム認証の設定
         http.formLogin()
-                .loginProcessingUrl("/login") // 認証処理を起動させるパス
                 .loginPage("/login") // ログインフォームのパス
-                .failureUrl("/login?error") // ログイン処理失敗時の遷移先
-                .defaultSuccessUrl("/movie") // 認証成功時の遷移先
-                .usernameParameter("userName")
-                .passwordParameter("password");
+                .loginProcessingUrl("/login") // 認証処理を起動させるパス
+                .defaultSuccessUrl("/movie").usernameParameter("userName").passwordParameter("password")// 認証成功時の遷移先
+                //.successHandler(new CustomAuthenticationSuccessHandler()) // 認証成功時のコールハンドラ
+                .failureUrl("/login?error"); // ログイン処理失敗時の遷移先
 
         // ログアウトの設定
         http.logout()
