@@ -15,11 +15,11 @@
                     <section th:if="${param.error}">ユーザ名、またはパスワードが正しくありません</section>
                     <form th:action="@{/login}" method="post">
                         <div>
-                            <p>User Name</p>
+                            <p class="form_name">User Name</p>
                             <input type="text" name="userName" required="required" autofocus="autofocus">
                         </div>
                         <div>
-                            <p>Password</p>
+                            <p class="form_name">Password</p>
                             <input type="password" name="password" required="required" autofocus="autofocus">
                         </div>
                         <input type="submit" value="Login">

@@ -41,6 +41,7 @@ a {
 
 .err {
   color: red;
+  font-size: 12px;
 }
 
 /*================================
@@ -188,11 +189,18 @@ footer .footer-wrapper .footer-container .footer-copyright {
 .wide-form-wrapper .wide-form-container .wide-form-content section {
   color: red;
 }
-.wide-form-wrapper .wide-form-container .wide-form-content p {
+.wide-form-wrapper .wide-form-container .wide-form-content p.form_name {
   font-size: 15px;
   font-family: Helvetica;
   font-weight: lighter;
   color: #7B7B7B;
+}
+.wide-form-wrapper .wide-form-container .wide-form-content p.password_message {
+  font-size: 12px;
+  font-family: Helvetica;
+  font-weight: lighter;
+  color: #7B7B7B;
+  margin-top: 5px;
 }
 .wide-form-wrapper .wide-form-container .wide-form-content input[type=text] {
   width: 350px;

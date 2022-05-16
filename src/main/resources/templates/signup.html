@@ -12,14 +12,17 @@
                 </div>
                 <div class="wide-form-content">
                     <h1>新規登録</h1>
-                    <form th:action="@{/signup}" method="post">
+                    <form th:action="@{/signup}" method="post" th:object="${accountForm}">
                         <div>
-                            <p>User Name</p>
-                            <input type="text" name="username" required="required" autofocus="autofocus">
+                            <p class="form_name">User Name</p>
+                            <p th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}" th:errorclass="err" ></p>
+                            <input type="text" th:field="*{userName}" autofocus="autofocus">
                         </div>
                         <div>
-                            <p>Password</p>
-                            <input type="password" name="password" required="required" autofocus="autofocus">
+                            <p class="form_name">Password</p>
+                            <p class="password_message">4文字以上の半角英数記号</p>
+                            <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" th:errorclass="err" ></p>
+                            <input type="password" th:field="*{password}" autofocus="autofocus">
                         </div>
                         <input type="submit" value="Signup">
                     </form>
