@@ -1,17 +1,21 @@
 package com.example.spring_movie_app.form;
 
+import com.example.spring_movie_app.validation.Password;
+
 import javax.validation.constraints.NotEmpty;
 
 public class AccountForm {
+
     /**
      * ユーザ名
      */
     @NotEmpty
     private String userName;
+
     /**
      * パスワード
      */
-    @NotEmpty
+    @Password
     private String password;
 
     public String getUserName() {

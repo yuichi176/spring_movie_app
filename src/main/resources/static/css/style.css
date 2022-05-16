@@ -41,6 +41,7 @@ a {
 
 .err {
   color: red;
+  font-size: 12px;
 }
 
 /*================================
@@ -193,6 +194,13 @@ footer .footer-wrapper .footer-container .footer-copyright {
   font-family: Helvetica;
   font-weight: lighter;
   color: #7B7B7B;
+}
+.wide-form-wrapper .wide-form-container .wide-form-content p.password_message {
+  font-size: 12px;
+  font-family: Helvetica;
+  font-weight: lighter;
+  color: #7B7B7B;
+  margin-top: 5px;
 }
 .wide-form-wrapper .wide-form-container .wide-form-content input[type=text] {
   width: 350px;

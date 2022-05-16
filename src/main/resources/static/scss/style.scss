@@ -55,6 +55,7 @@ a {
 
 .err{
   color: red;
+  font-size: 12px;
 }
 
 /*================================
@@ -233,6 +234,14 @@ footer {
         font-family: Helvetica;
         font-weight: lighter;
         color: #7B7B7B;
+      }
+
+      p.password_message {
+        font-size: 12px;
+        font-family: Helvetica;
+        font-weight: lighter;
+        color: #7B7B7B;
+        margin-top: 5px;
       }
 
       input[type="text"] {
