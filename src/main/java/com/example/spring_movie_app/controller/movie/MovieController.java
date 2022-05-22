@@ -11,6 +11,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+
 import java.util.List;
 
 
@@ -33,7 +34,9 @@ public class MovieController {
      */
     @GetMapping
     public ModelAndView getIndex(@AuthenticationPrincipal AccountDetails accountDetails,
+                                 //@PageableDefault(size=10, page=0) Pageable pageable,
                                  ModelAndView modelAndView) {
+
         List<Movie> movies = null;
         movies = this.movieService.findAll(accountDetails.getUserId());
         modelAndView.addObject("movies", movies);
