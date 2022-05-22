@@ -2,6 +2,7 @@ package com.example.spring_movie_app.controller.movie;
 
 import com.example.spring_movie_app.domain.Movie;
 import com.example.spring_movie_app.form.MovieForm;
+import com.example.spring_movie_app.repository.DuplicateKeyException;
 import com.example.spring_movie_app.security.AccountDetails;
 import com.example.spring_movie_app.service.movie.MovieService;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -64,17 +65,26 @@ public class MovieController {
                                 @ModelAttribute("addForm") @Validated MovieForm movieForm,
                                 BindingResult result,
                                 ModelAndView modelAndView) {
-        if(!result.hasErrors()) {
-            // MovieFormオブジェクトからMovieオブジェクトへの変換
-            Movie movie = movieForm.toEntity();
-            movie.setUserId(accountDetails.getUserId());
-            this.movieService.add(movie);
 
-            modelAndView.setViewName("redirect:/movie");
-        } else {
+        if(result.hasErrors()) {
             modelAndView.addObject("addForm", movieForm);
             modelAndView.setViewName("movie/add");
+            return modelAndView;
         }
+
+        // MovieFormオブジェクトからMovieオブジェクトへの変換
+        Movie movie = movieForm.toEntity();
+        movie.setUserId(accountDetails.getUserId());
+        try {
+            this.movieService.add(movie);
+        } catch (DuplicateKeyException ex) {
+            modelAndView.addObject("errorMsg", "すでに存在します。");
+            modelAndView.addObject("addForm", movieForm);
+            modelAndView.setViewName("movie/add");
+            return modelAndView;
+        }
+
+        modelAndView.setViewName("redirect:/movie");
         return modelAndView;
     }
 

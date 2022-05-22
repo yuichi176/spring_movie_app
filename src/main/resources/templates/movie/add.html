@@ -4,6 +4,9 @@
 <body>
     <header th:replace="common/home-header :: header_fragment"></header>
     <h1>映画の追加</h1>
+    <div>
+        <p th:if="${errorMsg != null}" th:text="${errorMsg}"></p>
+    </div>
     <form th:action="@{/movie/add}" method="post" th:object="${addForm}">
         <p>鑑賞日</p>
         <p th:if="${#fields.hasErrors('addDate')}" th:errors="*{addDate}" th:errorclass="err" ></p>
