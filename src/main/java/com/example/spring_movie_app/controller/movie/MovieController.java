@@ -40,7 +40,14 @@ public class MovieController {
 
         List<Movie> movies = null;
         movies = this.movieService.findAll(accountDetails.getUserId());
-        modelAndView.addObject("movies", movies);
+        if(movies.isEmpty()) {
+            modelAndView.addObject("movies", null);
+        } else {
+            modelAndView.addObject("movies", movies);
+        }
+
+        Integer movieCount = movies.size();
+        modelAndView.addObject("movieCount", movieCount);
 
         modelAndView.setViewName("movie/index");
         return modelAndView;
