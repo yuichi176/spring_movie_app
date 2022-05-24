@@ -3,7 +3,6 @@ package com.example.spring_movie_app.validation;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 import javax.validation.ReportAsSingleViolation;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 import java.lang.annotation.*;
@@ -23,7 +22,7 @@ public @interface Password {
     /**
      * message
      */
-    String message() default "パスワードに設定できる文字は英数字の4文字から30文字までです。";
+    String message() default "パスワードに設定できる文字は4文字以上30文字以下の英数字です。";
 
     /**
      * groups

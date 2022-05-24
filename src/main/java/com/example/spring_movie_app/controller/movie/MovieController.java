@@ -2,6 +2,7 @@ package com.example.spring_movie_app.controller.movie;
 
 import com.example.spring_movie_app.domain.Movie;
 import com.example.spring_movie_app.form.MovieForm;
+import com.example.spring_movie_app.helper.MessageSourceHelper;
 import com.example.spring_movie_app.repository.DuplicateKeyException;
 import com.example.spring_movie_app.security.AccountDetails;
 import com.example.spring_movie_app.service.movie.MovieService;
@@ -19,15 +20,20 @@ import java.util.List;
 @Controller
 @RequestMapping("/movie")
 public class MovieController {
+
     private final MovieService movieService;
+
+    private final MessageSourceHelper messageSource;
 
     /**
      * コンストラクタ
      *
      * @param movieService movieサービス
+     * @param messageSource メッセージソース
      */
-    public MovieController (MovieService movieService) {
+    public MovieController (MovieService movieService, MessageSourceHelper messageSource) {
         this.movieService = movieService;
+        this.messageSource = messageSource;
     }
 
     /**
@@ -85,7 +91,7 @@ public class MovieController {
         try {
             this.movieService.add(movie);
         } catch (DuplicateKeyException ex) {
-            modelAndView.addObject("errorMsg", "すでに存在します。");
+            modelAndView.addObject("errorMsg", messageSource.getMessage("movie.error.duplicate.movieName"));
             modelAndView.addObject("addForm", movieForm);
             modelAndView.setViewName("movie/add");
             return modelAndView;
