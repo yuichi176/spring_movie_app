@@ -1,6 +1,8 @@
 package com.example.spring_movie_app.controller;
 
 import com.example.spring_movie_app.form.AccountForm;
+import com.example.spring_movie_app.helper.MessageSourceHelper;
+import com.example.spring_movie_app.repository.DuplicateKeyException;
 import com.example.spring_movie_app.service.signup.SignupService;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -12,10 +14,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class SignupController {
-    private final SignupService signupService;
 
-    public SignupController(SignupService signupService) {
+    private final SignupService signupService;
+    private final MessageSourceHelper messageSource;
+
+    public SignupController(SignupService signupService, MessageSourceHelper messageSource) {
         this.signupService = signupService;
+        this.messageSource = messageSource;
     }
 
     @GetMapping("/signup")
@@ -29,15 +34,22 @@ public class SignupController {
     public ModelAndView postSignUp(@ModelAttribute("accountForm") @Validated AccountForm accountForm,
                                    BindingResult result,
                                    ModelAndView modelAndView) {
-        if(!result.hasErrors()) {
-            String userName = accountForm.getUserName();
-            String password = accountForm.getPassword();
-            this.signupService.add(userName, password);
-            modelAndView.setViewName("redirect:/login");
-        } else {
+        if(result.hasErrors()) {
             modelAndView.addObject("accountForm", accountForm);
             modelAndView.setViewName("signup");
+            return modelAndView;
         }
+
+        String userName = accountForm.getUserName();
+        String password = accountForm.getPassword();
+        try {
+            this.signupService.add(userName, password);
+        } catch (DuplicateKeyException ex) {
+            modelAndView.addObject("accountForm", accountForm);
+            modelAndView.addObject("errorMsg", messageSource.getMessage("account.error.duplicate.userName"));
+        }
+        modelAndView.setViewName("redirect:/login");
+
         return modelAndView;
     }
 }
