@@ -18,18 +18,18 @@
                         <p class="table-column">鑑賞日</p>
                         <p class="table-column">タイトル</p>
                         <p class="table-column">ジャンル</p>
-                        <p class="table-column">コメント</p>
                         <p class="table-column">評価</p>
-                        <p class="table-column"></p>
+                        <p class="table-column">コメント</p>
+<!--                        <p class="table-column"></p>-->
                     </div>
                     <div class="table-row movie-row" th:if="${!#lists.isEmpty(movies)}" th:each="movie:${movies}">
+                        <a class="modal-open"></a>
                         <p class="table-column" th:text="${movie.addDate}"></p>
                         <p class="table-column" th:text="${movie.movieName}"></p>
                         <p class="table-column" th:text="${movie.movieGenre}"></p>
-                        <p class="table-column" th:text="${movie.movieComment}"></p>
                         <p class="table-column"><span class="star5_rating" th:data-rate="${movie.movieEval}"></span></p>
-                        <p class="table-column"><a th:href="@{/movie/{movieId}/edit(movieId=${movie.movieId})}">編集/削除</a></p>
-<!--                        <a class="modal-open"></a>-->
+                        <p class="table-column" th:text="${movie.movieComment}"></p>
+<!--                        <p class="table-column"><a th:href="@{/movie/{movieId}/edit(movieId=${movie.movieId})}">編集/削除</a></p>-->
                     </div>
                 </th:block>
                 <th:block th:if="${movies} == null">

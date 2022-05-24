@@ -347,11 +347,11 @@ footer {
       position: relative;
 
       p {
-        width: 16%;
+        width: 18%;
         text-align: center;
 
         &:last-child {
-          width: 20%;
+          width: 28%;
         }
 
         a {
@@ -372,19 +372,19 @@ footer {
         }
       }
 
-      //.modal-open {
-      //  z-index: 1;
-      //  position: absolute;
-      //  top: 0;
-      //  left: 0;
-      //  height:100%;
-      //  width: 100%;
-      //
-      //  &:hover {
-      //    opacity: 0.1;
-      //    background-color: #000000;
-      //  }
-      //}
+      .modal-open {
+        z-index: 1;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height:100%;
+        width: 100%;
+
+        &:hover {
+          opacity: 0.1;
+          background-color: #000000;
+        }
+      }
     }
 
     .emp-msg {

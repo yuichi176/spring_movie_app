@@ -49,6 +49,11 @@ public class MovieController {
         if(movies.isEmpty()) {
             modelAndView.addObject("movies", null);
         } else {
+            for (Movie movie : movies) {
+                if(movie.getMovieComment().length() > 20) {
+                    movie.setMovieComment(movie.getMovieComment().substring(0, 21) + "...");
+                }
+            }
             modelAndView.addObject("movies", movies);
         }
 

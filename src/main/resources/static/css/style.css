@@ -292,11 +292,11 @@ footer .footer-wrapper .footer-container .footer-copyright {
   position: relative;
 }
 .table-wrapper .table-container .table-row p {
-  width: 16%;
+  width: 18%;
   text-align: center;
 }
 .table-wrapper .table-container .table-row p:last-child {
-  width: 20%;
+  width: 28%;
 }
 .table-wrapper .table-container .table-row p a {
   z-index: 100;
@@ -308,6 +308,18 @@ footer .footer-wrapper .footer-container .footer-copyright {
 }
 .table-wrapper .table-container .table-row.movie-row:last-child {
   border-bottom: none;
+}
+.table-wrapper .table-container .table-row .modal-open {
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+.table-wrapper .table-container .table-row .modal-open:hover {
+  opacity: 0.1;
+  background-color: #000000;
 }
 .table-wrapper .table-container .emp-msg {
   text-align: center;
