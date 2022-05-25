@@ -65,6 +65,19 @@ public class MovieController {
     }
 
     /**
+     * 映画詳細画面に遷移するコントローラメソッド
+     */
+    @GetMapping("/{movieId}/detail")
+    public ModelAndView getDetail(@PathVariable("movieId") Long movieId,
+                                  ModelAndView modelAndView) {
+        Movie movie = this.movieService.findOne(movieId);
+        modelAndView.addObject("movie", movie);
+
+        modelAndView.setViewName("movie/detail");
+        return modelAndView;
+    }
+
+    /**
      * 映画登録画面に遷移するコントローラメソッド
      */
     @GetMapping("/add")

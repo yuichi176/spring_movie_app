@@ -23,7 +23,7 @@
 <!--                        <p class="table-column"></p>-->
                     </div>
                     <div class="table-row movie-row" th:if="${!#lists.isEmpty(movies)}" th:each="movie:${movies}">
-                        <a class="modal-open" th:href="@{/movie/{movieId}/edit(movieId=${movie.movieId})}"></a>
+                        <a class="modal-open" th:href="@{/movie/{movieId}/detail(movieId=${movie.movieId})}"></a>
                         <p class="table-column" th:text="${movie.addDate}"></p>
                         <p class="table-column" th:text="${movie.movieName}"></p>
                         <p class="table-column" th:text="${movie.movieGenre}"></p>
