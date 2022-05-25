@@ -133,26 +133,37 @@ public class MovieController {
                                BindingResult result,
                                ModelAndView modelAndView) {
 
-        if(!result.hasErrors()) {
-            // MovieFormオブジェクトからMovieオブジェクトへの変換
-            Movie movie = movieForm.toEntity();
-            movie.setUserId(accountDetails.getUserId());
-            movie.setMovieId(movieId);
-            this.movieService.updateOne(movie);
-
-            modelAndView.setViewName("redirect:/movie");
-        } else {
+        if (result.hasErrors()) {
             modelAndView.addObject("editForm", movieForm);
             modelAndView.addObject("movieId", movieId);
             modelAndView.setViewName("movie/edit");
+            return modelAndView;
         }
+
+        // MovieFormオブジェクトからMovieオブジェクトへの変換
+        Movie movie = movieForm.toEntity();
+        movie.setUserId(accountDetails.getUserId());
+        movie.setMovieId(movieId);
+
+        try {
+            this.movieService.updateOne(movie);
+        } catch (DuplicateKeyException ex) {
+            modelAndView.addObject("errorMsg", messageSource.getMessage("movie.error.duplicate.movieName"));
+            modelAndView.addObject("editForm", movieForm);
+            modelAndView.addObject("movieId", movieId);
+            modelAndView.setViewName("movie/edit");
+            return modelAndView;
+        }
+
+        modelAndView.setViewName("redirect:/movie");
+
         return modelAndView;
     }
 
     /**
      * 映画削除を行うコントローラメソッド
      */
-    @PostMapping("/{movieId}/delete")
+    @GetMapping("/{movieId}/delete")
     public ModelAndView delete(@PathVariable("movieId") Long movieId,
                                ModelAndView modelAndView) {
         this.movieService.deleteOne(movieId);
