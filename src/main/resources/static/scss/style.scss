@@ -57,7 +57,7 @@ a {
 
 .err{
   color: red;
-  font-size: 12px;
+  font-size: 13px;
 }
 
 /*================================
@@ -421,12 +421,127 @@ tr {
 
 /*================================
     movie/add.html
+    movie/edit.html
 =================================*/
+.form-wrapper {
+  max-width: 650px;
+  width: 90%;
+  margin: 80px auto;
+  background: white;
+  border-radius: 20px;
+  border: solid 1px #C7C7C7;
+  box-sizing: border-box;
+  padding: 60px 75px;
 
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    h1 {
+      font-size: 25px;
+      font-weight: bold;
+      margin-bottom: 30px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+
+      p {
+        font-size: 16px;
+        color: #7B7B7B;
+        margin-bottom: 3px;
+
+        &.err{
+          color: red;
+          font-size: 13px;
+        }
+      }
+
+      .input-area {
+        margin-bottom: 20px;
+      }
+
+      input[type="date"] {
+        width: 200px;
+        border: solid 1px rgb(118, 118, 118);
+        border-radius: 5px;
+        padding: 5px 8px;
+      }
+
+      select {
+        width: 200px;
+        border: solid 1px rgb(118, 118, 118);
+        border-radius: 5px;
+        padding: 5px 8px;
+      }
+
+      input[type="text"] {
+        width: 100%;
+        border: solid 1px rgb(118, 118, 118);
+        border-radius: 5px;
+        box-sizing: border-box;
+        padding: 5px 8px;
+      }
+
+      textarea {
+        width: 100%;
+        height: 80px;
+        border: solid 1px rgb(118, 118, 118);
+        border-radius: 5px;
+        box-sizing: border-box;
+        padding: 5px 8px;
+      }
+
+      input[type="submit"] {
+        align-self: flex-end;
+        font-weight: bolder;
+        font-size: 20px;
+        width: 150px;
+        height: 50px;
+        background: $btn-color;
+        color: white;
+        border-radius: 3px;
+        border: none;
+        cursor: pointer;
+        margin-top: 20px;
+      }
+
+      .btn-wrap {
+        display: flex;
+        justify-content: flex-end;
+
+        input[type="submit"] {
+          margin-right: 10px;
+        }
+
+        a {
+          font-weight: bolder;
+          font-size: 20px;
+          width: 150px;
+          background: #FFBFBF;
+          color: white;
+          border-radius: 3px;
+          border: none;
+          cursor: pointer;
+          margin-top: 20px;
+          padding: 0;
+          padding-top: 6px;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+
+/*====== 星評価 ======*/
 .evaluation{
   display: flex;
   flex-direction: row-reverse;
-  justify-content: center;
+  justify-content: flex-end;
+  margin-top: -5px;
 }
 
 .evaluation input[type='radio']{
@@ -435,20 +550,10 @@ tr {
 
 .evaluation label{
   position: relative;
-  padding: 10px 10px 0;
   color: gray;
   cursor: pointer;
-  font-size: 50px;
-}
-
-.evaluation label .text{
-  position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
-  text-align: center;
-  font-size: 12px;
-  color: gray;
+  padding: 0 2px;
+  font-size: 25px;
 }
 
 .evaluation label:hover,

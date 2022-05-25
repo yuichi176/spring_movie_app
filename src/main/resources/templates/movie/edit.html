@@ -4,47 +4,61 @@
 <body>
     <header th:replace="common/home-header :: header_fragment"></header>
     <main>
-        <h1>映画の編集</h1>
-        <form th:action="@{/movie/{movieId}/update(movieId=${movieId})}" method="post" th:object="${editForm}">
-            <p>鑑賞日</p>
-            <p th:if="${#fields.hasErrors('addDate')}" th:errors="*{addDate}" th:errorclass="err" ></p>
-            <input type="date" th:value="*{addDate}" th:field="*{addDate}" th:errorclass="err" />
-            <br />
-            <p>映画名</p>
-            <p th:if="${#fields.hasErrors('movieName')}" th:errors="*{movieName}" th:errorclass="err" ></p>
-            <input type="text" th:value="*{movieName}" th:field="*{movieName}" th:errorclass="err" />
-            <br />
-            <p>ジャンル</p>
-            <p th:if="${#fields.hasErrors('movieGenre')}" th:errors="*{movieGenre}" th:errorclass="err" ></p>
-            <select th:field="*{movieGenre}">
-                <option th:selected="*{movieGenre} == 'action'" value="action" >action</option>
-                <option th:selected="*{movieGenre} == 'SF'" value="SF" >SF</option>
-                <option th:selected="*{movieGenre} == 'horror'" value="horror" >horror</option>
-            </select>
-            <p>ひとこと</p>
-            <p th:if="${#fields.hasErrors('movieComment')}" th:errors="*{movieComment}" th:errorclass="err" ></p>
-            <input type="text" th:value="*{movieComment}" th:field="*{movieComment}" th:errorclass="err" />
-            <br />
-            <p>評価</p>
-            <p th:if="${#fields.hasErrors('movieEval')}" th:errors="*{movieEval}" th:errorclass="err" ></p>
-            <div class="evaluation">
-                <input id="star1" type="radio" th:field="*{movieEval}" value="5" />
-                <label for="star1">★</label>
-                <input id="star2" type="radio" th:field="*{movieEval}" value="4" />
-                <label for="star2">★</label>
-                <input id="star3" type="radio" th:field="*{movieEval}" value="3" />
-                <label for="star3">★</label>
-                <input id="star4" type="radio" th:field="*{movieEval}" value="2" />
-                <label for="star4">★</label>
-                <input id="star5" type="radio" th:field="*{movieEval}" value="1" />
-                <label for="star5">★</label>
-                <p th:if="${#fields.hasErrors('movieEval')}" th:errors="*{movieEval}" th:errorclass="err" ></p>
+        <div class="form-wrapper edit-form-wrapper">
+            <div class="form-container edit-form-container">
+                <h1>映画の編集</h1>
+                <div>
+                    <p th:if="${errorMsg != null}" th:text="${errorMsg}"></p>
+                </div>
+                <form th:action="@{/movie/{movieId}/update(movieId=${movieId})}" method="post" th:object="${editForm}">
+                    <div>
+                        <p>鑑賞日</p>
+                        <p th:if="${#fields.hasErrors('addDate')}" th:errors="*{addDate}" th:errorclass="err" ></p>
+                        <input class="input-area" type="date" th:value="*{addDate}" th:field="*{addDate}" th:errorclass="err" />
+                    </div>
+                    <div>
+                        <p>ジャンル</p>
+                        <p th:if="${#fields.hasErrors('movieGenre')}" th:errors="*{movieGenre}" th:errorclass="err" ></p>
+                        <select class="input-area" th:field="*{movieGenre}">
+                            <option th:selected="*{movieGenre} == 'action'" value="action" >action</option>
+                            <option th:selected="*{movieGenre} == 'SF'" value="SF" >SF</option>
+                            <option th:selected="*{movieGenre} == 'horror'" value="horror" >horror</option>
+                        </select>
+                    </div>
+                    <div>
+                        <p>評価</p>
+                        <p th:if="${#fields.hasErrors('movieEval')}" th:errors="*{movieEval}" th:errorclass="err" ></p>
+                        <div class="evaluation input-area">
+                            <input id="star1" type="radio" th:field="*{movieEval}" value="5" />
+                            <label for="star1">★</label>
+                            <input id="star2" type="radio" th:field="*{movieEval}" value="4" />
+                            <label for="star2">★</label>
+                            <input id="star3" type="radio" th:field="*{movieEval}" value="3" />
+                            <label for="star3">★</label>
+                            <input id="star4" type="radio" th:field="*{movieEval}" value="2" />
+                            <label for="star4">★</label>
+                            <input id="star5" type="radio" th:field="*{movieEval}" value="1" />
+                            <label for="star5">★</label>
+                            <p th:if="${#fields.hasErrors('movieEval')}" th:errors="*{movieEval}" th:errorclass="err" ></p>
+                        </div>
+                    </div>
+                    <div>
+                        <p>映画タイトル</p>
+                        <p th:if="${#fields.hasErrors('movieName')}" th:errors="*{movieName}" th:errorclass="err" ></p>
+                        <input class="input-area" type="text" th:value="*{movieName}" th:field="*{movieName}" th:errorclass="err" />
+                    </div>
+                    <div>
+                        <p>コメント</p>
+                        <p th:if="${#fields.hasErrors('movieComment')}" th:errors="*{movieComment}" th:errorclass="err" ></p>
+                        <textarea class="input-area" th:value="*{movieComment}" th:field="*{movieComment}" th:errorclass="err"></textarea>
+                    </div>
+                    <div class="btn-wrap">
+                        <input type="submit" value="更新">
+                        <a th:href="@{/movie/{movieId}/delete(movieId=${movieId})}">削除</a>
+                    </div>
+                </form>
             </div>
-            <input type="submit" value="更新">
-        </form>
-        <form th:action="@{/movie/{movieId}/delete(movieId=${movieId})}" method="post">
-            <input type="submit" value="削除">
-        </form>
+        </div>
         <footer th:replace="common/footer :: footer_fragment"></footer>
     </main>
 </body>

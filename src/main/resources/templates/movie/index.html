@@ -10,7 +10,7 @@
                     <p>記録した映画：<spa th:text="${movieCount}"></spa>本</p>
                     <a th:href="@{/movie/add}">
                         <i class="fa-solid fa-circle-plus fa-2x"></i>
-                        <span>追加</span>
+                        <span>登録</span>
                     </a>
                 </div>
                 <th:block th:if="${movies} != null">
@@ -23,7 +23,7 @@
 <!--                        <p class="table-column"></p>-->
                     </div>
                     <div class="table-row movie-row" th:if="${!#lists.isEmpty(movies)}" th:each="movie:${movies}">
-                        <a class="modal-open"></a>
+                        <a class="modal-open" th:href="@{/movie/{movieId}/edit(movieId=${movie.movieId})}"></a>
                         <p class="table-column" th:text="${movie.addDate}"></p>
                         <p class="table-column" th:text="${movie.movieName}"></p>
                         <p class="table-column" th:text="${movie.movieGenre}"></p>
