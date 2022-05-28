@@ -60,7 +60,10 @@ public class MovieController {
         Integer movieCount = movies.size();
         modelAndView.addObject("movieCount", movieCount);
 
+        modelAndView.addObject("loginUserName", accountDetails.getUserName());
+
         modelAndView.setViewName("movie/index");
+
         return modelAndView;
     }
 
@@ -68,12 +71,16 @@ public class MovieController {
      * 映画詳細画面に遷移するコントローラメソッド
      */
     @GetMapping("/{movieId}/detail")
-    public ModelAndView getDetail(@PathVariable("movieId") Long movieId,
+    public ModelAndView getDetail(@AuthenticationPrincipal AccountDetails accountDetails,
+                                  @PathVariable("movieId") Long movieId,
                                   ModelAndView modelAndView) {
         Movie movie = this.movieService.findOne(movieId);
         modelAndView.addObject("movie", movie);
 
+        modelAndView.addObject("loginUserName", accountDetails.getUserName());
+
         modelAndView.setViewName("movie/detail");
+
         return modelAndView;
     }
 
@@ -81,8 +88,11 @@ public class MovieController {
      * 映画登録画面に遷移するコントローラメソッド
      */
     @GetMapping("/add")
-    public ModelAndView getAdd(ModelAndView modelAndView) {
+    public ModelAndView getAdd(@AuthenticationPrincipal AccountDetails accountDetails,
+                               ModelAndView modelAndView) {
         modelAndView.addObject("addForm", new MovieForm());
+
+        modelAndView.addObject("loginUserName", accountDetails.getUserName());
 
         modelAndView.setViewName("movie/add");
         return modelAndView;
@@ -116,6 +126,7 @@ public class MovieController {
         }
 
         modelAndView.setViewName("redirect:/movie");
+
         return modelAndView;
     }
 
@@ -123,7 +134,8 @@ public class MovieController {
      * 映画編集画面に遷移するコントローラメソッド
      */
     @GetMapping("/{movieId}/edit")
-    public ModelAndView getEdit(@PathVariable("movieId") Long movieId,
+    public ModelAndView getEdit(@AuthenticationPrincipal AccountDetails accountDetails,
+                                @PathVariable("movieId") Long movieId,
                                 ModelAndView modelAndView) {
         Movie movie = this.movieService.findOne(movieId);
         // MovieオブジェクトからMovieFormオブジェクトへの変換
@@ -132,7 +144,10 @@ public class MovieController {
 
         modelAndView.addObject("movieId", movieId);
 
+        modelAndView.addObject("loginUserName", accountDetails.getUserName());
+
         modelAndView.setViewName("movie/edit");
+
         return modelAndView;
     }
 

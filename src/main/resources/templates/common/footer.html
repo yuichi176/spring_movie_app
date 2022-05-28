@@ -1,8 +1,12 @@
-<footer th:fragment="footer_fragment">
-    <div class="footer-wrapper">
-        <div class="footer-container">
-            <p class="footer-logo"><a th:href="@{/movie}">Movies</a></p>
-            <p class="footer-copyright"><span lang="en">©</span>&nbsp;yuichi-sugiyama</p>
+<th:block th:fragment="footer_fragment">
+    <footer>
+        <div class="footer-wrapper">
+            <div class="footer-container">
+                <p class="footer-logo"><a th:href="@{/movie}">Movies</a></p>
+                <p class="footer-copyright"><span lang="en">©</span>&nbsp;yuichi-sugiyama</p>
+            </div>
         </div>
-    </div>
-</footer>
+    </footer>
+    <script th:src="@{/js/menu.js}"></script>
+</th:block>
+

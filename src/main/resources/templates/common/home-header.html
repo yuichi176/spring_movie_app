@@ -1,14 +1,47 @@
-<header class="header" th:fragment="header_fragment">
-    <div class="header-wrapper">
-        <div class="header-container">
-            <p class="header-logo"><a th:href="@{/movie}">Movies</a></p>
-            <ul class="nav-global">
-<!--                <li class="nav-global-item" th:text="${userName}"></li>-->
-                <li class="nav-global-item">
-                    <form th:action="@{/logout}" method="post">
-                        <input type="submit" value="ログアウト" />
-                    </form>
-                </li>
-            </ul>
+<th:block th:fragment="header_fragment">
+    <header class="header">
+        <!-- PC表示 -->
+        <div class="pc-header-wrapper">
+            <div class="pc-header-container">
+                <p class="header-logo"><a th:href="@{/movie}">Movies</a></p>
+                <ul class="nav-global">
+                    <li class="nav-global-item" th:text="${loginUserName} + さん"></li>
+                    <li class="nav-global-item">
+                        <form th:action="@{/logout}" method="post">
+                            <input type="submit" value="ログアウト" />
+                        </form>
+                    </li>
+                </ul>
+            </div>
         </div>
-</header>
+        <!-- スマホ表示 -->
+        <div class="sp-header-wrapper">
+            <div class="sp-header-container">
+                <p class="header-logo"><a th:href="@{/movie}">Movies</a></p>
+                <ul class="nav-global">
+                    <li class="nav-global-item" th:text="${loginUserName} + さん"></li>
+                    <li class="nav-global-item">
+                        <form th:action="@{/logout}" method="post">
+                            <input type="submit" value="ログアウト" />
+                        </form>
+                    </li>
+                </ul>
+<!--                <p class="menu-btn"><i class="fa-solid fa-bars"></i></p>-->
+            </div>
+        </div>
+    </header>
+    <!-- グローバルナビモーダル-->
+<!--    <div class="menu-wrapper">-->
+<!--        <div class="menu-container">-->
+<!--            <div class="menu-header">-->
+<!--                <p class="menu-logo">Menu</p>-->
+<!--                <p class="menu-close"><i class="fa-solid fa-xmark"></i></p>-->
+<!--            </div>-->
+<!--            <ul class="nav-global">-->
+<!--                <li class="nav-global-item"><a th:href="@{/signup}">新規登録</a></li>-->
+<!--                <li class="nav-global-item"><a th:href="@{/login}">ログイン</a></li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="overlay"></div>-->
+</th:block>

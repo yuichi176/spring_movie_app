@@ -25,7 +25,9 @@
                             <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" th:errorclass="err" ></p>
                             <input type="password" th:field="*{password}" autofocus="autofocus">
                         </div>
-                        <input type="submit" value="Signup">
+                        <div>
+                            <input type="submit" value="Signup">
+                        </div>
                     </form>
                 </div>
             </div>
