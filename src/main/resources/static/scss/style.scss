@@ -588,7 +588,7 @@ footer {
   background: white;
   border-radius: 20px;
   //border: solid 1px #C7C7C7;
-  box-shadow: 0 0 3px gray;
+  box-shadow: 0 0 1px gray;
   overflow: hidden;
 
   @include mobile {
@@ -762,9 +762,14 @@ tr {
   background: white;
   border-radius: 20px;
   //border: solid 1px #C7C7C7;
-  box-shadow: 0 0 3px gray;
+  box-shadow: 0 0 1px gray;
   box-sizing: border-box;
   padding: 60px 75px;
+
+  @include mobile {
+    margin: 50px auto;
+    padding: 40px 10px;
+  }
 
   .detail-container {
     display: flex;
@@ -775,10 +780,22 @@ tr {
       font-size: 25px;
       font-weight: bold;
       margin-bottom: 30px;
+
+      @include mobile {
+        font-size: 23px;
+        text-align: center;
+        margin-bottom: 30px;
+      }
     }
 
     div{
       margin-bottom: 20px;
+      box-sizing: border-box;
+      padding-left: 15px;
+
+      @include mobile {
+        margin-bottom: 15px;
+      }
 
       .title {
         font-size: 16px;
@@ -807,6 +824,14 @@ tr {
       margin-top: 40px;
       padding: 6px 0;
       text-align: center;
+
+      @include mobile {
+        font-size: 16px;
+        width: 80%;
+        height: 35px;
+        align-self: center;
+        padding-top: 12px;
+      }
     }
   }
 }
@@ -822,9 +847,14 @@ tr {
   background: white;
   border-radius: 20px;
   //border: solid 1px #C7C7C7;
-  box-shadow: 0 0 3px gray;
+  box-shadow: 0 0 1px gray;
   box-sizing: border-box;
   padding: 60px 75px;
+
+  @include mobile {
+    margin: 50px auto;
+    padding: 40px 10px;
+  }
 
   .form-container {
     display: flex;
@@ -835,6 +865,12 @@ tr {
       font-size: 25px;
       font-weight: bold;
       margin-bottom: 30px;
+
+      @include mobile {
+        font-size: 23px;
+        text-align: center;
+        margin-bottom: 30px;
+      }
     }
 
     form {
@@ -847,6 +883,10 @@ tr {
         color: #7B7B7B;
         margin-bottom: 3px;
 
+        @include mobile {
+          font-size: 14px;
+        }
+
         &.err{
           color: red;
           font-size: 13px;
@@ -855,6 +895,10 @@ tr {
 
       .input-area {
         margin-bottom: 20px;
+
+        @include mobile {
+          margin-bottom: 10px;
+        }
       }
 
       input[type="date"] {
@@ -862,6 +906,11 @@ tr {
         border: solid 1px rgb(118, 118, 118);
         border-radius: 5px;
         padding: 5px 8px;
+
+        @include mobile {
+          width: 50%;
+          height: 25px;
+        }
       }
 
       select {
@@ -869,6 +918,11 @@ tr {
         border: solid 1px rgb(118, 118, 118);
         border-radius: 5px;
         padding: 5px 8px;
+
+        @include mobile {
+          width: 50%;
+          height: 35px;
+        }
       }
 
       input[type="text"] {
@@ -900,14 +954,29 @@ tr {
         border: none;
         cursor: pointer;
         margin-top: 20px;
+
+        @include mobile {
+          font-size: 16px;
+          width: 80%;
+          height: 43px;
+          align-self: center;
+        }
       }
 
       .btn-wrap {
         display: flex;
         justify-content: flex-end;
 
+        @include mobile {
+          justify-content: center;
+        }
+
         input[type="submit"] {
           margin-right: 15px;
+
+          @include mobile {
+            width: 30%;
+          }
         }
 
         a {
@@ -923,6 +992,11 @@ tr {
           padding: 0;
           padding-top: 6px;
           text-align: center;
+
+          @include mobile {
+            font-size: 16px;
+            width: 30%;
+          }
         }
       }
     }
