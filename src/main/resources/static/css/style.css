@@ -207,9 +207,19 @@ footer {
   height: 220px;
   background: #fff;
 }
+@media screen and (max-width: 520px) {
+  footer {
+    height: 150px;
+  }
+}
 footer .footer-wrapper {
   padding-top: 100px;
   padding-bottom: 20px;
+}
+@media screen and (max-width: 520px) {
+  footer .footer-wrapper {
+    padding-top: 50px;
+  }
 }
 footer .footer-wrapper .footer-container {
   display: flex;
@@ -221,8 +231,18 @@ footer .footer-wrapper .footer-container .footer-logo {
   font-weight: bold;
   font-size: 25px;
 }
+@media screen and (max-width: 520px) {
+  footer .footer-wrapper .footer-container .footer-logo {
+    font-size: 20px;
+  }
+}
 footer .footer-wrapper .footer-container .footer-copyright {
   font-size: 15px;
+}
+@media screen and (max-width: 520px) {
+  footer .footer-wrapper .footer-container .footer-copyright {
+    font-size: 12px;
+  }
 }
 
 /*================================
@@ -285,6 +305,14 @@ footer .footer-wrapper .footer-container .footer-copyright {
   border-radius: 20px;
   box-shadow: 0 0 3px gray;
 }
+@media screen and (max-width: 520px) {
+  .wide-form-wrapper {
+    margin: 50px auto;
+    width: 80%;
+    box-shadow: none;
+    height: calc(100vh - 350px);
+  }
+}
 .wide-form-wrapper .wide-form-container {
   display: flex;
   height: 100%;
@@ -292,6 +320,11 @@ footer .footer-wrapper .footer-container .footer-copyright {
 .wide-form-wrapper .wide-form-container .wide-form-img {
   position: relative;
   width: 50%;
+}
+@media screen and (max-width: 520px) {
+  .wide-form-wrapper .wide-form-container .wide-form-img {
+    display: none;
+  }
 }
 .wide-form-wrapper .wide-form-container .wide-form-img img {
   object-fit: cover;
@@ -316,28 +349,53 @@ footer .footer-wrapper .footer-container .footer-copyright {
   box-sizing: border-box;
   padding: 70px 0 70px 50px;
 }
+@media screen and (max-width: 520px) {
+  .wide-form-wrapper .wide-form-container .wide-form-content {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 40px 10px;
+  }
+}
 .wide-form-wrapper .wide-form-container .wide-form-content h1 {
   font-size: 30px;
   font-weight: bold;
   margin-bottom: 40px;
 }
+@media screen and (max-width: 520px) {
+  .wide-form-wrapper .wide-form-container .wide-form-content h1 {
+    font-size: 23px;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+}
 .wide-form-wrapper .wide-form-container .wide-form-content section {
   color: red;
 }
-.wide-form-wrapper .wide-form-container .wide-form-content p.form_name {
+@media screen and (max-width: 520px) {
+  .wide-form-wrapper .wide-form-container .wide-form-content div {
+    width: 90%;
+    margin: 0 auto;
+  }
+}
+.wide-form-wrapper .wide-form-container .wide-form-content div p.form_name {
   font-size: 15px;
   font-family: Helvetica;
   font-weight: lighter;
   color: #7B7B7B;
 }
-.wide-form-wrapper .wide-form-container .wide-form-content p.password_message {
+@media screen and (max-width: 520px) {
+  .wide-form-wrapper .wide-form-container .wide-form-content div p.form_name {
+    font-size: 14px;
+  }
+}
+.wide-form-wrapper .wide-form-container .wide-form-content div p.password_message {
   font-size: 12px;
   font-family: Helvetica;
   font-weight: lighter;
   color: #7B7B7B;
   margin-top: 5px;
 }
-.wide-form-wrapper .wide-form-container .wide-form-content input[type=text] {
+.wide-form-wrapper .wide-form-container .wide-form-content div input[type=text] {
   width: 350px;
   height: 40px;
   border-radius: 3px;
@@ -347,7 +405,13 @@ footer .footer-wrapper .footer-container .footer-copyright {
   margin-bottom: 20px;
   box-sizing: border-box;
 }
-.wide-form-wrapper .wide-form-container .wide-form-content input[type=password] {
+@media screen and (max-width: 520px) {
+  .wide-form-wrapper .wide-form-container .wide-form-content div input[type=text] {
+    width: 100%;
+    height: 35px;
+  }
+}
+.wide-form-wrapper .wide-form-container .wide-form-content div input[type=password] {
   width: 350px;
   height: 40px;
   border-radius: 3px;
@@ -357,7 +421,14 @@ footer .footer-wrapper .footer-container .footer-copyright {
   margin-bottom: 80px;
   box-sizing: border-box;
 }
-.wide-form-wrapper .wide-form-container .wide-form-content input[type=submit] {
+@media screen and (max-width: 520px) {
+  .wide-form-wrapper .wide-form-container .wide-form-content div input[type=password] {
+    width: 100%;
+    height: 35px;
+    margin-bottom: 50px;
+  }
+}
+.wide-form-wrapper .wide-form-container .wide-form-content div input[type=submit] {
   font-family: Helvetica;
   font-weight: bolder;
   font-size: 20px;
@@ -368,6 +439,38 @@ footer .footer-wrapper .footer-container .footer-copyright {
   border-radius: 3px;
   border: none;
   cursor: pointer;
+  margin-bottom: 20px;
+}
+@media screen and (max-width: 520px) {
+  .wide-form-wrapper .wide-form-container .wide-form-content div input[type=submit] {
+    font-size: 16px;
+    width: 100%;
+    height: 43px;
+  }
+}
+.wide-form-wrapper .wide-form-container .wide-form-content div:last-child {
+  width: 350px;
+  text-align: right;
+}
+@media screen and (max-width: 520px) {
+  .wide-form-wrapper .wide-form-container .wide-form-content div:last-child {
+    margin-bottom: 30px;
+    text-align: center;
+  }
+}
+@media screen and (max-width: 520px) {
+  .wide-form-wrapper .wide-form-container .wide-form-content div:last-child {
+    width: 90%;
+  }
+}
+.wide-form-wrapper .wide-form-container .wide-form-content div:last-child a {
+  color: #81a3e3;
+  text-decoration: underline;
+}
+@media screen and (max-width: 520px) {
+  .wide-form-wrapper .wide-form-container .wide-form-content div:last-child a {
+    font-size: 15px;
+  }
 }
 
 /*================================
