@@ -70,6 +70,7 @@ header {
     background: #fff;
     padding-left: 150px;
     padding-right: 150px;
+    border-bottom: solid 1px #e3e3e3;
 
     @include mobile {
       display: none;
@@ -117,6 +118,7 @@ header {
       background: #fff;
       padding-left: 20px;
       padding-right: 20px;
+      border-bottom: solid 1px #e3e3e3;
     }
 
     .sp-header-container {
@@ -242,14 +244,19 @@ footer {
 
   .footer-wrapper {
 
+    @include mobile {
+      border-top: solid 1px #e3e3e3;
+    }
+
     .footer-container {
       display: flex;
       flex-direction: column;
       align-items: center;
       padding-top: 50px;
 
-      @include mobile {}
-      padding-top: 70px;
+      @include mobile {
+        padding-top: 70px;
+      }
 
       .footer-logo {
         font-family: Helvetica;
@@ -569,12 +576,26 @@ footer {
     movie/index.html
 =================================*/
 
+.movie-list-page {
+  @include mobile {
+    background: white;
+  }
+}
+
 .table-wrapper {
   width: 80%;
   margin: 80px auto;
   background: white;
   border-radius: 20px;
-  border: solid 1px #C7C7C7;
+  //border: solid 1px #C7C7C7;
+  box-shadow: 0 0 3px gray;
+  overflow: hidden;
+
+  @include mobile {
+    width: 95%;
+    box-shadow: none;
+    margin: 35px auto;
+  }
 
   .table-container {
     display: flex;
@@ -588,8 +609,18 @@ footer {
       color: #6F6F6F;
       padding: 30px 60px;
 
+      @include mobile {
+        padding: 0;
+        margin-bottom: 20px;
+      }
+
       p {
         font-size: 23px;
+
+        @include mobile {
+          font-size: 20px;
+          padding-left: 15px;
+        }
       }
 
       a {
@@ -605,6 +636,12 @@ footer {
         align-items: center;
         cursor: pointer;
 
+        @include mobile {
+          width: 100px;
+          height: 40px;
+          margin-right: 10px;
+        }
+
          i {
            font-size: 20px;
            padding-right: 8px;
@@ -612,6 +649,10 @@ footer {
 
         span {
           font-size: 18px;
+
+          @include mobile {
+            font-size: 15px;
+          }
         }
       }
     }
@@ -626,6 +667,10 @@ footer {
         width: 18%;
         text-align: center;
 
+        @include mobile {
+          width: calc(100% / 3);
+        }
+
         &:last-child {
           width: 28%;
         }
@@ -634,17 +679,31 @@ footer {
           z-index: 100;
           color: #6F6F6F;
         }
+
+        @include mobile {
+          &:nth-of-type(3), &:nth-of-type(5)  {
+            display: none;
+          }
+        }
       }
 
       &.def-row {
         color: #6F6F6F;
         border-top: solid 1px #C7C7C7;
+
+        @include mobile {
+          padding: 15px;
+        }
       }
 
       &.movie-row {
 
         &:last-child {
           border-bottom: none;
+
+          @include mobile {
+            border-bottom: solid 1px #C7C7C7;
+          }
         }
       }
 
@@ -702,7 +761,8 @@ tr {
   margin: 80px auto;
   background: white;
   border-radius: 20px;
-  border: solid 1px #C7C7C7;
+  //border: solid 1px #C7C7C7;
+  box-shadow: 0 0 3px gray;
   box-sizing: border-box;
   padding: 60px 75px;
 
@@ -761,7 +821,8 @@ tr {
   margin: 80px auto;
   background: white;
   border-radius: 20px;
-  border: solid 1px #C7C7C7;
+  //border: solid 1px #C7C7C7;
+  box-shadow: 0 0 3px gray;
   box-sizing: border-box;
   padding: 60px 75px;
 

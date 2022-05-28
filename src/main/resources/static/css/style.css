@@ -54,6 +54,7 @@ header .pc-header-wrapper {
   background: #fff;
   padding-left: 150px;
   padding-right: 150px;
+  border-bottom: solid 1px #e3e3e3;
 }
 @media screen and (max-width: 520px) {
   header .pc-header-wrapper {
@@ -98,6 +99,7 @@ header .sp-header-wrapper {
     background: #fff;
     padding-left: 20px;
     padding-right: 20px;
+    border-bottom: solid 1px #e3e3e3;
   }
 }
 header .sp-header-wrapper .sp-header-container {
@@ -212,12 +214,21 @@ footer {
     height: 150px;
   }
 }
+@media screen and (max-width: 520px) {
+  footer .footer-wrapper {
+    border-top: solid 1px #e3e3e3;
+  }
+}
 footer .footer-wrapper .footer-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding-top: 50px;
-  padding-top: 70px;
+}
+@media screen and (max-width: 520px) {
+  footer .footer-wrapper .footer-container {
+    padding-top: 70px;
+  }
 }
 footer .footer-wrapper .footer-container .footer-logo {
   font-family: Helvetica;
@@ -519,12 +530,26 @@ footer .footer-wrapper .footer-container .footer-copyright {
 /*================================
     movie/index.html
 =================================*/
+@media screen and (max-width: 520px) {
+  .movie-list-page {
+    background: white;
+  }
+}
+
 .table-wrapper {
   width: 80%;
   margin: 80px auto;
   background: white;
   border-radius: 20px;
-  border: solid 1px #C7C7C7;
+  box-shadow: 0 0 3px gray;
+  overflow: hidden;
+}
+@media screen and (max-width: 520px) {
+  .table-wrapper {
+    width: 95%;
+    box-shadow: none;
+    margin: 35px auto;
+  }
 }
 .table-wrapper .table-container {
   display: flex;
@@ -538,8 +563,20 @@ footer .footer-wrapper .footer-container .footer-copyright {
   color: #6F6F6F;
   padding: 30px 60px;
 }
+@media screen and (max-width: 520px) {
+  .table-wrapper .table-container .table-header {
+    padding: 0;
+    margin-bottom: 20px;
+  }
+}
 .table-wrapper .table-container .table-header p {
   font-size: 23px;
+}
+@media screen and (max-width: 520px) {
+  .table-wrapper .table-container .table-header p {
+    font-size: 20px;
+    padding-left: 15px;
+  }
 }
 .table-wrapper .table-container .table-header a {
   display: block;
@@ -554,12 +591,24 @@ footer .footer-wrapper .footer-container .footer-copyright {
   align-items: center;
   cursor: pointer;
 }
+@media screen and (max-width: 520px) {
+  .table-wrapper .table-container .table-header a {
+    width: 100px;
+    height: 40px;
+    margin-right: 10px;
+  }
+}
 .table-wrapper .table-container .table-header a i {
   font-size: 20px;
   padding-right: 8px;
 }
 .table-wrapper .table-container .table-header a span {
   font-size: 18px;
+}
+@media screen and (max-width: 520px) {
+  .table-wrapper .table-container .table-header a span {
+    font-size: 15px;
+  }
 }
 .table-wrapper .table-container .table-row {
   display: flex;
@@ -571,6 +620,11 @@ footer .footer-wrapper .footer-container .footer-copyright {
   width: 18%;
   text-align: center;
 }
+@media screen and (max-width: 520px) {
+  .table-wrapper .table-container .table-row p {
+    width: 33.3333333333%;
+  }
+}
 .table-wrapper .table-container .table-row p:last-child {
   width: 28%;
 }
@@ -578,12 +632,27 @@ footer .footer-wrapper .footer-container .footer-copyright {
   z-index: 100;
   color: #6F6F6F;
 }
+@media screen and (max-width: 520px) {
+  .table-wrapper .table-container .table-row p:nth-of-type(3), .table-wrapper .table-container .table-row p:nth-of-type(5) {
+    display: none;
+  }
+}
 .table-wrapper .table-container .table-row.def-row {
   color: #6F6F6F;
   border-top: solid 1px #C7C7C7;
 }
+@media screen and (max-width: 520px) {
+  .table-wrapper .table-container .table-row.def-row {
+    padding: 15px;
+  }
+}
 .table-wrapper .table-container .table-row.movie-row:last-child {
   border-bottom: none;
+}
+@media screen and (max-width: 520px) {
+  .table-wrapper .table-container .table-row.movie-row:last-child {
+    border-bottom: solid 1px #C7C7C7;
+  }
 }
 .table-wrapper .table-container .table-row .modal-open {
   z-index: 1;
@@ -629,7 +698,7 @@ tr .movie-edit-link a {
   margin: 80px auto;
   background: white;
   border-radius: 20px;
-  border: solid 1px #C7C7C7;
+  box-shadow: 0 0 3px gray;
   box-sizing: border-box;
   padding: 60px 75px;
 }
@@ -681,7 +750,7 @@ tr .movie-edit-link a {
   margin: 80px auto;
   background: white;
   border-radius: 20px;
-  border: solid 1px #C7C7C7;
+  box-shadow: 0 0 3px gray;
   box-sizing: border-box;
   padding: 60px 75px;
 }
