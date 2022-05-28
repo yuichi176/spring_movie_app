@@ -136,6 +136,21 @@ header {
       .menu-btn {
         font-size: 23px;
       }
+
+      .nav-global {
+        display: flex;
+
+        .nav-global-item {
+          padding-left: 50px;
+
+          input[type="submit"] {
+            background: white;
+            border: none;
+            padding-top: 15px;
+            font-size: 13px;
+          }
+        }
+      }
     }
   }
 }
@@ -172,7 +187,8 @@ header {
         width: 100%;
         display: flex;
         justify-content: space-between;
-        border-bottom: solid;
+        border-bottom: solid 1px black;
+        padding-bottom: 10px;
 
         .menu-logo {
           font-size: 25px;
@@ -197,7 +213,7 @@ header {
         width: 100%;
 
         li {
-          padding: 10px 0;
+          padding: 15px 0;
           border-bottom: solid 1px;
           width: 100%;
           text-align: center;
@@ -345,7 +361,7 @@ footer {
       color: white;
       font-size: 18px;
       margin: 0 50px;
-      padding: 0 20px;
+      padding: 0 30px;
       position: relative;
 
       @include mobile {

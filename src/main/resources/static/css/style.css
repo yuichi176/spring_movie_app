@@ -116,6 +116,18 @@ header .sp-header-wrapper .sp-header-container .header-logo {
 header .sp-header-wrapper .sp-header-container .menu-btn {
   font-size: 23px;
 }
+header .sp-header-wrapper .sp-header-container .nav-global {
+  display: flex;
+}
+header .sp-header-wrapper .sp-header-container .nav-global .nav-global-item {
+  padding-left: 50px;
+}
+header .sp-header-wrapper .sp-header-container .nav-global .nav-global-item input[type=submit] {
+  background: white;
+  border: none;
+  padding-top: 15px;
+  font-size: 13px;
+}
 
 .menu-wrapper {
   display: none;
@@ -149,7 +161,8 @@ header .sp-header-wrapper .sp-header-container .menu-btn {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    border-bottom: solid;
+    border-bottom: solid 1px black;
+    padding-bottom: 10px;
   }
   .menu-wrapper .menu-container .menu-header .menu-logo {
     font-size: 25px;
@@ -171,7 +184,7 @@ header .sp-header-wrapper .sp-header-container .menu-btn {
     width: 100%;
   }
   .menu-wrapper .menu-container .nav-global li {
-    padding: 10px 0;
+    padding: 15px 0;
     border-bottom: solid 1px;
     width: 100%;
     text-align: center;
@@ -315,7 +328,7 @@ footer .footer-wrapper .footer-container .footer-copyright {
   color: white;
   font-size: 18px;
   margin: 0 50px;
-  padding: 0 20px;
+  padding: 0 30px;
   position: relative;
 }
 @media screen and (max-width: 520px) {
