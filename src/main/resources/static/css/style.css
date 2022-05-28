@@ -78,11 +78,12 @@ header .pc-header-wrapper .pc-header-container .header-logo {
   font-size: 30px;
 }
 header .pc-header-wrapper .pc-header-container .nav-global {
-  font-size: 15px;
   display: flex;
+  padding-top: 25px;
 }
 header .pc-header-wrapper .pc-header-container .nav-global .nav-global-item {
   padding-left: 50px;
+  font-size: 15px;
 }
 header .pc-header-wrapper .pc-header-container .nav-global .nav-global-item input[type=submit] {
   background: white;
@@ -118,15 +119,15 @@ header .sp-header-wrapper .sp-header-container .menu-btn {
 }
 header .sp-header-wrapper .sp-header-container .nav-global {
   display: flex;
+  padding-top: 15px;
 }
 header .sp-header-wrapper .sp-header-container .nav-global .nav-global-item {
   padding-left: 50px;
+  font-size: 13px;
 }
 header .sp-header-wrapper .sp-header-container .nav-global .nav-global-item input[type=submit] {
   background: white;
   border: none;
-  padding-top: 15px;
-  font-size: 13px;
 }
 
 .menu-wrapper {

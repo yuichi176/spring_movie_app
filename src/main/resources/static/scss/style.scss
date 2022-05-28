@@ -93,11 +93,12 @@ header {
       }
 
       .nav-global {
-        font-size: 15px;
         display: flex;
+        padding-top: 25px;
 
         .nav-global-item {
           padding-left: 50px;
+          font-size: 15px;
 
           input[type="submit"] {
             background: white;
@@ -139,15 +140,15 @@ header {
 
       .nav-global {
         display: flex;
+        padding-top: 15px;
 
         .nav-global-item {
           padding-left: 50px;
+          font-size: 13px;
 
           input[type="submit"] {
             background: white;
             border: none;
-            padding-top: 15px;
-            font-size: 13px;
           }
         }
       }
