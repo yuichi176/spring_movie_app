@@ -204,7 +204,7 @@ header .sp-header-wrapper .sp-header-container .menu-btn {
 =================================*/
 footer {
   width: 100%;
-  height: 220px;
+  height: 150px;
   background: #fff;
 }
 @media screen and (max-width: 520px) {
@@ -212,19 +212,12 @@ footer {
     height: 150px;
   }
 }
-footer .footer-wrapper {
-  padding-top: 100px;
-  padding-bottom: 20px;
-}
-@media screen and (max-width: 520px) {
-  footer .footer-wrapper {
-    padding-top: 50px;
-  }
-}
 footer .footer-wrapper .footer-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 50px;
+  padding-top: 70px;
 }
 footer .footer-wrapper .footer-container .footer-logo {
   font-family: Helvetica;
