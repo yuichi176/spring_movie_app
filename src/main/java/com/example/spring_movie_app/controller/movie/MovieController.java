@@ -116,14 +116,8 @@ public class MovieController {
         // MovieFormオブジェクトからMovieオブジェクトへの変換
         Movie movie = movieForm.toEntity();
         movie.setUserId(accountDetails.getUserId());
-        try {
-            this.movieService.add(movie);
-        } catch (DuplicateKeyException ex) {
-            modelAndView.addObject("errorMsg", messageSource.getMessage("movie.error.duplicate.movieName"));
-            modelAndView.addObject("addForm", movieForm);
-            modelAndView.setViewName("movie/add");
-            return modelAndView;
-        }
+
+        this.movieService.add(movie);
 
         modelAndView.setViewName("redirect:/movie");
 
@@ -173,15 +167,7 @@ public class MovieController {
         movie.setUserId(accountDetails.getUserId());
         movie.setMovieId(movieId);
 
-        try {
-            this.movieService.updateOne(movie);
-        } catch (DuplicateKeyException ex) {
-            modelAndView.addObject("errorMsg", messageSource.getMessage("movie.error.duplicate.movieName"));
-            modelAndView.addObject("editForm", movieForm);
-            modelAndView.addObject("movieId", movieId);
-            modelAndView.setViewName("movie/edit");
-            return modelAndView;
-        }
+        this.movieService.updateOne(movie);
 
         modelAndView.setViewName("redirect:/movie");
 

@@ -46,7 +46,7 @@ public class SignupController {
             this.signupService.add(userName, password);
         } catch (DataIntegrityViolationException ex) {
             modelAndView.addObject("accountForm", accountForm);
-            modelAndView.addObject("errorMsg", messageSource.getMessage("account.error.duplicate.userName"));
+            modelAndView.addObject("errorMsg", messageSource.getMessage("account.error.duplicate.userName", userName));
             modelAndView.setViewName("signup");
             return modelAndView;
         }

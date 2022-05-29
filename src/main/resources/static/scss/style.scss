@@ -476,6 +476,11 @@ footer {
 
       section {
         color: red;
+
+        @include mobile {
+          width: 90%;
+          margin: 0 auto;
+        }
       }
 
       div {
