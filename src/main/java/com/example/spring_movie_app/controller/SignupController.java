@@ -2,8 +2,8 @@ package com.example.spring_movie_app.controller;
 
 import com.example.spring_movie_app.form.AccountForm;
 import com.example.spring_movie_app.helper.MessageSourceHelper;
-import com.example.spring_movie_app.repository.DuplicateKeyException;
 import com.example.spring_movie_app.service.signup.SignupService;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
@@ -44,9 +44,11 @@ public class SignupController {
         String password = accountForm.getPassword();
         try {
             this.signupService.add(userName, password);
-        } catch (DuplicateKeyException ex) {
+        } catch (DataIntegrityViolationException ex) {
             modelAndView.addObject("accountForm", accountForm);
-            modelAndView.addObject("errorMsg", messageSource.getMessage("account.error.duplicate.userName"));
+            modelAndView.addObject("errorMsg", messageSource.getMessage("account.error.duplicate.userName", userName));
+            modelAndView.setViewName("signup");
+            return modelAndView;
         }
         modelAndView.setViewName("redirect:/login");
 

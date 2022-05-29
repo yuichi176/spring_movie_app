@@ -12,7 +12,7 @@
                 </div>
                 <div class="wide-form-content">
                     <h1>新規登録</h1>
-                    <p th:if="${errorMsg != null}" th:text="${errorMsg}"></p>
+                    <section th:if="${errorMsg != null}" th:text="${errorMsg}"></section>
                     <form th:action="@{/signup}" method="post" th:object="${accountForm}">
                         <div>
                             <p class="form_name">User Name</p>

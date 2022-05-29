@@ -437,6 +437,12 @@ footer .footer-wrapper .footer-container .footer-copyright {
   color: red;
 }
 @media screen and (max-width: 520px) {
+  .wide-form-wrapper .wide-form-container .wide-form-content section {
+    width: 90%;
+    margin: 0 auto;
+  }
+}
+@media screen and (max-width: 520px) {
   .wide-form-wrapper .wide-form-container .wide-form-content div {
     width: 90%;
     margin: 0 auto;
