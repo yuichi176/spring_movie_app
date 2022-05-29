@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8" />
+    <title>404Error</title>
 </head>
 <body>
-エラー発生
+    <h1 th:text="${status} + ' ' + ${error}"></h1>
 </body>
 </html>
