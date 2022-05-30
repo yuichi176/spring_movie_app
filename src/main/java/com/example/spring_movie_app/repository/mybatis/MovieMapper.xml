@@ -17,8 +17,13 @@
 
     <select id="find" resultMap="Movie">
         SELECT * FROM movie
-        WHERE user_id = #{userId}
-        AND delete_flag = 0
+        <where>
+            user_id = #{userId}
+            AND delete_flag = 0
+            <if test="keyword != null">
+                AND movie_name LIKE CONCAT('%', #{keyword}, '%')
+            </if>
+        </where>
     </select>
 
     <select id="get" resultMap="Movie">

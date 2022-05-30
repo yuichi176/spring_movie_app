@@ -4,11 +4,16 @@
 <body>
     <header th:replace="common/home-header :: header_fragment"></header>
     <main class="movie-list-page">
+        <form method="get" th:action="@{/movie/search}">
+            <input type="text" placeholder="映画名で検索" id="keyword" name="keyword">
+            <input type="submit">
+        </form>
         <div class="table-wrapper">
             <div class="table-container">
                 <div class="table-header">
-                    <p>記録した映画：<spa th:text="${movieCount}"></spa>本</p>
-                    <a th:href="@{/movie/add}">
+                    <p th:if="${allMovieCountMsg} != null" th:text="${allMovieCountMsg}"></p>
+                    <p th:if="${searchResultMsg} != null" th:text="${searchResultMsg}"></p>
+                    <a th:if="${searchResultMsg} == null" th:href="@{/movie/add}">
                         <i class="fa-solid fa-circle-plus fa-2x"></i>
                         <span>登録</span>
                     </a>
@@ -32,7 +37,7 @@
 <!--                        <p class="table-column"><a th:href="@{/movie/{movieId}/edit(movieId=${movie.movieId})}">編集/削除</a></p>-->
                     </div>
                 </th:block>
-                <th:block th:if="${movies} == null">
+                <th:block th:if="${movies} == null and ${searchResultMsg} == null">
                     <p class="emp-msg">まだ映画が登録されていません。早速登録してみましょう！</p>
                 </th:block>
             </div>

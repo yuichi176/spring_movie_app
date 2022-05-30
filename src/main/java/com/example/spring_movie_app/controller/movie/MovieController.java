@@ -57,8 +57,7 @@ public class MovieController {
             modelAndView.addObject("movies", movies);
         }
 
-        Integer movieCount = movies.size();
-        modelAndView.addObject("movieCount", movieCount);
+        modelAndView.addObject("allMovieCountMsg", "記録した映画：" + movies.size() + "本");
 
         modelAndView.addObject("loginUserName", accountDetails.getUserName());
 
@@ -70,8 +69,8 @@ public class MovieController {
     /**
      * 映画検索を行うコントローラメソッド
      */
-    @PostMapping
-    public ModelAndView postList(@AuthenticationPrincipal AccountDetails accountDetails,
+    @GetMapping("/search")
+    public ModelAndView getSearch(@AuthenticationPrincipal AccountDetails accountDetails,
                                  @RequestParam String keyword,
                                  //@PageableDefault(size=10, page=0) Pageable pageable,
                                  ModelAndView modelAndView) {
@@ -80,6 +79,7 @@ public class MovieController {
         movies = this.movieService.find(accountDetails.getUserId(), keyword);
         if(movies.isEmpty()) {
             modelAndView.addObject("movies", null);
+            modelAndView.addObject("searchResultMsg", "検索結果なし");
         } else {
             for (Movie movie : movies) {
                 if(movie.getMovieComment().length() > 20) {
@@ -87,10 +87,8 @@ public class MovieController {
                 }
             }
             modelAndView.addObject("movies", movies);
+            modelAndView.addObject("searchResultMsg", "検索結果：" + movies.size() + "本");
         }
-
-        Integer movieCount = movies.size();
-        modelAndView.addObject("movieCount", movieCount);
 
         modelAndView.addObject("loginUserName", accountDetails.getUserName());
 
