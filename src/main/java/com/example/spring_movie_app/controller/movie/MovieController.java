@@ -3,7 +3,6 @@ package com.example.spring_movie_app.controller.movie;
 import com.example.spring_movie_app.domain.Movie;
 import com.example.spring_movie_app.form.MovieForm;
 import com.example.spring_movie_app.helper.MessageSourceHelper;
-import com.example.spring_movie_app.repository.DuplicateKeyException;
 import com.example.spring_movie_app.security.AccountDetails;
 import com.example.spring_movie_app.service.movie.MovieService;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -12,6 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 import java.util.List;
@@ -105,6 +105,7 @@ public class MovieController {
     public ModelAndView postAdd(@AuthenticationPrincipal AccountDetails accountDetails,
                                 @ModelAttribute("addForm") @Validated MovieForm movieForm,
                                 BindingResult result,
+                                RedirectAttributes redirectAttributes,
                                 ModelAndView modelAndView) {
 
         if(result.hasErrors()) {
@@ -118,6 +119,9 @@ public class MovieController {
         movie.setUserId(accountDetails.getUserId());
 
         this.movieService.add(movie);
+
+        redirectAttributes.addFlashAttribute("add_msg",
+                messageSource.getMessage("movie.success.add", movie.getMovieName()));
 
         modelAndView.setViewName("redirect:/movie");
 
@@ -153,6 +157,7 @@ public class MovieController {
                                @PathVariable("movieId") Long movieId,
                                @ModelAttribute("editForm") @Validated MovieForm movieForm,
                                BindingResult result,
+                               RedirectAttributes redirectAttributes,
                                ModelAndView modelAndView) {
 
         if (result.hasErrors()) {
@@ -169,6 +174,9 @@ public class MovieController {
 
         this.movieService.updateOne(movie);
 
+        redirectAttributes.addFlashAttribute("edit_msg",
+                messageSource.getMessage("movie.success.edit", movie.getMovieName()));
+
         modelAndView.setViewName("redirect:/movie");
 
         return modelAndView;
@@ -179,8 +187,14 @@ public class MovieController {
      */
     @GetMapping("/{movieId}/delete")
     public ModelAndView delete(@PathVariable("movieId") Long movieId,
+                               RedirectAttributes redirectAttributes,
                                ModelAndView modelAndView) {
+        Movie movie = this.movieService.findOne(movieId);
+
         this.movieService.deleteOne(movieId);
+
+        redirectAttributes.addFlashAttribute("delete_msg",
+                messageSource.getMessage("movie.success.delete", movie.getMovieName()));
 
         modelAndView.setViewName("redirect:/movie");
         return modelAndView;
