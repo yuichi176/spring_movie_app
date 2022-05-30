@@ -4,6 +4,9 @@
 <body>
     <header th:replace="common/home-header :: header_fragment"></header>
     <main class="movie-list-page">
+        <section class="add_msg" th:if="${add_msg != null}" th:text="${add_msg}"></section>
+        <section class="edit_msg" th:if="${edit_msg != null}" th:text="${edit_msg}"></section>
+        <section class="delete_msg" th:if="${delete_msg != null}" th:text="${delete_msg}"></section>
         <div class="table-wrapper">
             <div class="table-container">
                 <div class="table-header">
