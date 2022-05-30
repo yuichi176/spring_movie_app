@@ -44,14 +44,14 @@ public class MovieRepositoryImplTest {
         List<Movie> findResult = new ArrayList<>();
         Movie movie = new Movie();
         findResult.add(movie);
-        Mockito.doReturn(findResult).when(mapper).findAll(input);
+        Mockito.doReturn(findResult).when(mapper).find(input, null);
 
         // when 対象メソッドの呼び出し
-        List<Movie> result = new MovieRepositoryImpl(this.sqlSession).findAll(input);
+        List<Movie> result = new MovieRepositoryImpl(this.sqlSession).find(input, null);
 
         //then
         assertEquals(findResult, result); // 戻り値の検証
-        Mockito.verify(mapper, Mockito.times(1)).findAll(input); // 呼び出し回数と戻り値の検証
+        Mockito.verify(mapper, Mockito.times(1)).find(input, null); // 呼び出し回数と戻り値の検証
     }
 
 //    @Test
@@ -71,14 +71,14 @@ public class MovieRepositoryImplTest {
         // setup
         Long input = 1L;
         Movie findResult = new Movie();
-        Mockito.doReturn(findResult).when(mapper).findOne(input);
+        Mockito.doReturn(findResult).when(mapper).find(input, null);
 
         // when
-        Movie result = new MovieRepositoryImpl(this.sqlSession).findOne(input);
+        Movie result = new MovieRepositoryImpl(this.sqlSession).get(input);
 
         //then
         assertEquals(findResult, result);
-        Mockito.verify(mapper, Mockito.times(1)).findOne(input);
+        Mockito.verify(mapper, Mockito.times(1)).get(input);
     }
 
     @Test

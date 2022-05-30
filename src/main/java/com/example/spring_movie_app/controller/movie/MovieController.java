@@ -40,12 +40,44 @@ public class MovieController {
      * 映画一覧画面に遷移するコントローラメソッド
      */
     @GetMapping
-    public ModelAndView getIndex(@AuthenticationPrincipal AccountDetails accountDetails,
+    public ModelAndView getList(@AuthenticationPrincipal AccountDetails accountDetails,
                                  //@PageableDefault(size=10, page=0) Pageable pageable,
                                  ModelAndView modelAndView) {
 
         List<Movie> movies = null;
-        movies = this.movieService.findAll(accountDetails.getUserId());
+        movies = this.movieService.find(accountDetails.getUserId(), null);
+        if(movies.isEmpty()) {
+            modelAndView.addObject("movies", null);
+        } else {
+            for (Movie movie : movies) {
+                if(movie.getMovieComment().length() > 20) {
+                    movie.setMovieComment(movie.getMovieComment().substring(0, 21) + "...");
+                }
+            }
+            modelAndView.addObject("movies", movies);
+        }
+
+        Integer movieCount = movies.size();
+        modelAndView.addObject("movieCount", movieCount);
+
+        modelAndView.addObject("loginUserName", accountDetails.getUserName());
+
+        modelAndView.setViewName("movie/index");
+
+        return modelAndView;
+    }
+
+    /**
+     * 映画検索を行うコントローラメソッド
+     */
+    @PostMapping
+    public ModelAndView postList(@AuthenticationPrincipal AccountDetails accountDetails,
+                                 @RequestParam String keyword,
+                                 //@PageableDefault(size=10, page=0) Pageable pageable,
+                                 ModelAndView modelAndView) {
+
+        List<Movie> movies = null;
+        movies = this.movieService.find(accountDetails.getUserId(), keyword);
         if(movies.isEmpty()) {
             modelAndView.addObject("movies", null);
         } else {
@@ -74,7 +106,7 @@ public class MovieController {
     public ModelAndView getDetail(@AuthenticationPrincipal AccountDetails accountDetails,
                                   @PathVariable("movieId") Long movieId,
                                   ModelAndView modelAndView) {
-        Movie movie = this.movieService.findOne(movieId);
+        Movie movie = this.movieService.get(movieId);
         modelAndView.addObject("movie", movie);
 
         modelAndView.addObject("loginUserName", accountDetails.getUserName());
@@ -131,7 +163,7 @@ public class MovieController {
     public ModelAndView getEdit(@AuthenticationPrincipal AccountDetails accountDetails,
                                 @PathVariable("movieId") Long movieId,
                                 ModelAndView modelAndView) {
-        Movie movie = this.movieService.findOne(movieId);
+        Movie movie = this.movieService.get(movieId);
         // MovieオブジェクトからMovieFormオブジェクトへの変換
         MovieForm movieForm = movie.toForm();
         modelAndView.addObject("editForm", movieForm);
