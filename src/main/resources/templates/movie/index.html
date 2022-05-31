@@ -1,48 +1,52 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="common/head :: head_fragment"></head>
+<head th:replace="common/head :: head_fragment">
+    <link rel="stylesheet" href="../../static/scss/style.scss">
+</head>
 <body>
     <header th:replace="common/home-header :: header_fragment"></header>
     <main class="movie-list-page">
         <section class="add_msg" th:if="${add_msg != null}" th:text="${add_msg}"></section>
         <section class="edit_msg" th:if="${edit_msg != null}" th:text="${edit_msg}"></section>
         <section class="delete_msg" th:if="${delete_msg != null}" th:text="${delete_msg}"></section>
-        <form method="get" th:action="@{/movie/search}">
-            <input type="text" placeholder="映画名で検索" id="keyword" name="keyword">
-            <input type="submit">
-        </form>
-        <div class="table-wrapper">
-            <div class="table-container">
-                <div class="table-header">
-                    <p th:if="${allMovieCountMsg} != null" th:text="${allMovieCountMsg}"></p>
-                    <p th:if="${searchResultMsg} != null" th:text="${searchResultMsg}"></p>
-                    <a th:if="${searchResultMsg} == null" th:href="@{/movie/add}">
-                        <i class="fa-solid fa-circle-plus fa-2x"></i>
-                        <span>登録</span>
-                    </a>
+        <div class="movie-list-page-container">
+            <form class="search-form" method="get" th:action="@{/movie/search}">
+                <input type="text" placeholder="映画名で検索" id="keyword" name="keyword" th:value="${keyword}">
+                <input type="submit" value="&#xf002">
+            </form>
+            <div class="table-wrapper">
+                <div class="table-container">
+                    <div class="table-header">
+                        <p th:if="${allMovieCountMsg} != null" th:text="${allMovieCountMsg}"></p>
+                        <p th:if="${searchResultMsg} != null" th:text="${searchResultMsg}"></p>
+                        <a th:if="${searchResultMsg} == null" th:href="@{/movie/add}">
+                            <i class="fa-solid fa-circle-plus fa-2x"></i>
+                            <span>登録</span>
+                        </a>
+                    </div>
+                    <th:block th:if="${movies} != null">
+                        <div class="table-row def-row">
+                            <p class="table-column">鑑賞日</p>
+                            <p class="table-column">タイトル</p>
+                            <p class="table-column">ジャンル</p>
+                            <p class="table-column">評価</p>
+                            <p class="table-column">コメント</p>
+                            <!--                        <p class="table-column"></p>-->
+                        </div>
+                        <div class="table-row movie-row" th:if="${!#lists.isEmpty(movies)}" th:each="movie:${movies}">
+                            <a class="modal-open" th:href="@{/movie/{movieId}/detail(movieId=${movie.movieId})}"></a>
+                            <p class="table-column" th:text="${movie.addDate}"></p>
+                            <p class="table-column" th:text="${movie.movieName}"></p>
+                            <p class="table-column" th:text="${movie.movieGenre}"></p>
+                            <p class="table-column"><span class="star5_rating" th:data-rate="${movie.movieEval}"></span></p>
+                            <p class="table-column" th:text="${movie.movieComment}"></p>
+                            <!--                        <p class="table-column"><a th:href="@{/movie/{movieId}/edit(movieId=${movie.movieId})}">編集/削除</a></p>-->
+                        </div>
+                    </th:block>
+                    <th:block th:if="${movies} == null and ${searchResultMsg} == null">
+                        <p class="emp-msg">まだ映画が登録されていません。早速登録してみましょう！</p>
+                    </th:block>
                 </div>
-                <th:block th:if="${movies} != null">
-                    <div class="table-row def-row">
-                        <p class="table-column">鑑賞日</p>
-                        <p class="table-column">タイトル</p>
-                        <p class="table-column">ジャンル</p>
-                        <p class="table-column">評価</p>
-                        <p class="table-column">コメント</p>
-<!--                        <p class="table-column"></p>-->
-                    </div>
-                    <div class="table-row movie-row" th:if="${!#lists.isEmpty(movies)}" th:each="movie:${movies}">
-                        <a class="modal-open" th:href="@{/movie/{movieId}/detail(movieId=${movie.movieId})}"></a>
-                        <p class="table-column" th:text="${movie.addDate}"></p>
-                        <p class="table-column" th:text="${movie.movieName}"></p>
-                        <p class="table-column" th:text="${movie.movieGenre}"></p>
-                        <p class="table-column"><span class="star5_rating" th:data-rate="${movie.movieEval}"></span></p>
-                        <p class="table-column" th:text="${movie.movieComment}"></p>
-<!--                        <p class="table-column"><a th:href="@{/movie/{movieId}/edit(movieId=${movie.movieId})}">編集/削除</a></p>-->
-                    </div>
-                </th:block>
-                <th:block th:if="${movies} == null and ${searchResultMsg} == null">
-                    <p class="emp-msg">まだ映画が登録されていません。早速登録してみましょう！</p>
-                </th:block>
             </div>
         </div>
     </main>

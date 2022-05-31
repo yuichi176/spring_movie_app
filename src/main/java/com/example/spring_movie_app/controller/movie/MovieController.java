@@ -90,6 +90,7 @@ public class MovieController {
             modelAndView.addObject("searchResultMsg", "検索結果：" + movies.size() + "本");
         }
 
+        modelAndView.addObject("keyword", keyword);
         modelAndView.addObject("loginUserName", accountDetails.getUserName());
 
         modelAndView.setViewName("movie/index");
@@ -219,7 +220,7 @@ public class MovieController {
     public ModelAndView delete(@PathVariable("movieId") Long movieId,
                                RedirectAttributes redirectAttributes,
                                ModelAndView modelAndView) {
-        Movie movie = this.movieService.findOne(movieId);
+        Movie movie = this.movieService.get(movieId);
 
         this.movieService.deleteOne(movieId);
 
