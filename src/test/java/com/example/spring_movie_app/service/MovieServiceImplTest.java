@@ -32,15 +32,15 @@ public class MovieServiceImplTest {
         Movie movie = new Movie();
         List<Movie> result = new ArrayList<>();
         result.add(movie);
-        Mockito.doReturn(result).when(movieRepository).findAll(input);
+        Mockito.doReturn(result).when(movieRepository).find(input, null);
         MovieServiceImpl target = new MovieServiceImpl(movieRepository);
 
         // when
-        List<Movie> movieList = target.findAll(input);
+        List<Movie> movieList = target.find(input, null);
 
         // then
         assertEquals(result, movieList);
-        Mockito.verify(movieRepository, Mockito.times(1)).findAll(input);
+        Mockito.verify(movieRepository, Mockito.times(1)).find(input, null);
     }
 
 

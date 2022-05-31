@@ -16,17 +16,17 @@ public class MovieRepositoryImpl implements MovieRepository {
     }
 
     @Override
-    public List<Movie> findAll(Long userId) {
+    public List<Movie> find(Long userId, String keyword) {
         List<Movie> movies = null;
         movies = this.sqlSessionTemplate
-                .getMapper(MovieMapper.class).findAll(userId);
+                .getMapper(MovieMapper.class).find(userId, keyword);
         return movies;
     }
 
     @Override
-    public Movie findOne(Long movieId) {
+    public Movie get(Long movieId) {
         Movie movie = this.sqlSessionTemplate
-                .getMapper(MovieMapper.class).findOne(movieId);
+                .getMapper(MovieMapper.class).get(movieId);
         return movie;
     }
 

@@ -15,12 +15,12 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public List<Movie> findAll(Long userId) {
-        return this.movieRepository.findAll(userId);
+    public List<Movie> find(Long userId, String keyword) {
+        return this.movieRepository.find(userId, keyword);
     }
 
     @Override
-    public Movie findOne(Long movieId) {return this.movieRepository.findOne(movieId); }
+    public Movie get(Long movieId) {return this.movieRepository.get(movieId); }
 
     @Override
     public void add(Movie movie) {

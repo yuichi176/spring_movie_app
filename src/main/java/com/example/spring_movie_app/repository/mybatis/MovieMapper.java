@@ -12,9 +12,9 @@ import java.util.List;
 @Mapper
 public interface MovieMapper {
 
-    List<Movie> findAll(@Param("userId") Long userId);
+    List<Movie> find(@Param("userId") Long userId, @Param("keyword") String keyword);
 
-    Movie findOne(@Param("movieId") Long movieId);
+    Movie get(@Param("movieId") Long movieId);
 
     int add(Movie movie);
 

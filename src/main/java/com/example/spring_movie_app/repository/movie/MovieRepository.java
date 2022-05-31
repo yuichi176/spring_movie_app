@@ -7,12 +7,13 @@ import java.util.List;
 public interface MovieRepository {
 
     /**
-     * ユーザID指定による全検索処理
+     * クエリパラメータによる複数件参照処理
      *
      * @param userId ユーザID
-     * @return ユーザに関連する全映画のリスト
+     * @param keyword キーワード
+     * @return ユーザに関連する条件に合致したMovieデータリスト
      */
-    List<Movie> findAll(Long userId);
+    List<Movie> find(Long userId, String keyword);
 
     /**
      * ID指定による1件検索処理
@@ -20,7 +21,7 @@ public interface MovieRepository {
      * @param movieId 検索対象の映画ID
      * @return 指定されたIDの映画データ
      */
-    Movie findOne(Long movieId);
+    Movie get(Long movieId);
 
     /**
      * 映画の新規登録処理
