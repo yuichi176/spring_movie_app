@@ -1,9 +1,11 @@
 package com.example.spring_movie_app.controller.movie;
 
+import com.example.spring_movie_app.domain.Genre;
 import com.example.spring_movie_app.domain.Movie;
 import com.example.spring_movie_app.form.MovieForm;
 import com.example.spring_movie_app.helper.MessageSourceHelper;
 import com.example.spring_movie_app.security.AccountDetails;
+import com.example.spring_movie_app.service.genre.GenreService;
 import com.example.spring_movie_app.service.movie.MovieService;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -23,16 +25,20 @@ public class MovieController {
 
     private final MovieService movieService;
 
+    private final GenreService genreService;
+
     private final MessageSourceHelper messageSource;
 
     /**
      * コンストラクタ
      *
      * @param movieService movieサービス
+     * @param genreService genreサービス
      * @param messageSource メッセージソース
      */
-    public MovieController (MovieService movieService, MessageSourceHelper messageSource) {
+    public MovieController (MovieService movieService, GenreService genreService, MessageSourceHelper messageSource) {
         this.movieService = movieService;
+        this.genreService = genreService;
         this.messageSource = messageSource;
     }
 
@@ -121,6 +127,9 @@ public class MovieController {
     @GetMapping("/add")
     public ModelAndView getAdd(@AuthenticationPrincipal AccountDetails accountDetails,
                                ModelAndView modelAndView) {
+        List<Genre> genres = this.genreService.find(null);
+        modelAndView.addObject("genres", genres);
+
         modelAndView.addObject("addForm", new MovieForm());
 
         modelAndView.addObject("loginUserName", accountDetails.getUserName());
@@ -166,6 +175,9 @@ public class MovieController {
     public ModelAndView getEdit(@AuthenticationPrincipal AccountDetails accountDetails,
                                 @PathVariable("movieId") Long movieId,
                                 ModelAndView modelAndView) {
+        List<Genre> genres = this.genreService.find(null);
+        modelAndView.addObject("genres", genres);
+
         Movie movie = this.movieService.get(movieId);
         // MovieオブジェクトからMovieFormオブジェクトへの変換
         MovieForm movieForm = movie.toForm();
