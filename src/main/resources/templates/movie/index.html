@@ -24,6 +24,12 @@
                             <span>登録</span>
                         </a>
                     </div>
+                    <ul class="genre-filter-container">
+                        <li class="genre-filter-item active" data-filter="all">全て</li>
+                        <li class="genre-filter-item" data-filter="action">action</li>
+                        <li class="genre-filter-item" data-filter="SF">SF</li>
+                        <li class="genre-filter-item" data-filter="horror">horror</li>
+                    </ul>
                     <th:block th:if="${movies} != null">
                         <div class="table-row def-row">
                             <p class="table-column">鑑賞日</p>
@@ -33,15 +39,17 @@
                             <p class="table-column">コメント</p>
                             <!--                        <p class="table-column"></p>-->
                         </div>
-                        <div class="table-row movie-row" th:if="${!#lists.isEmpty(movies)}" th:each="movie:${movies}">
-                            <a class="modal-open" th:href="@{/movie/{movieId}/detail(movieId=${movie.movieId})}"></a>
-                            <p class="table-column" th:text="${movie.addDate}"></p>
-                            <p class="table-column" th:text="${movie.movieName}"></p>
-                            <p class="table-column" th:text="${movie.movieGenre}"></p>
-                            <p class="table-column"><span class="star5_rating" th:data-rate="${movie.movieEval}"></span></p>
-                            <p class="table-column" th:text="${movie.movieComment}"></p>
-                            <!--                        <p class="table-column"><a th:href="@{/movie/{movieId}/edit(movieId=${movie.movieId})}">編集/削除</a></p>-->
-                        </div>
+                        <th:block th:each="movie:${movies}" th:if="${!#lists.isEmpty(movies)}">
+                            <div class="table-row movie-row show" th:data-genre="${movie.movieGenre}" >
+                                <a class="modal-open" th:href="@{/movie/{movieId}/detail(movieId=${movie.movieId})}"></a>
+                                <p class="table-column" th:text="${movie.addDate}"></p>
+                                <p class="table-column" th:text="${movie.movieName}"></p>
+                                <p class="table-column" th:text="${movie.movieGenre}"></p>
+                                <p class="table-column"><span class="star5_rating" th:data-rate="${movie.movieEval}"></span></p>
+                                <p class="table-column" th:text="${movie.movieComment}"></p>
+                                <!--                        <p class="table-column"><a th:href="@{/movie/{movieId}/edit(movieId=${movie.movieId})}">編集/削除</a></p>-->
+                            </div>
+                        </th:block>
                     </th:block>
                     <th:block th:if="${movies} == null and ${searchResultMsg} == null">
                         <p class="emp-msg">まだ映画が登録されていません。早速登録してみましょう！</p>
@@ -51,5 +59,6 @@
         </div>
     </main>
     <footer th:replace="common/footer :: footer_fragment"></footer>
+    <script th:src="@{/js/genreFilter.js}"></script>
     </body>
 </html>
