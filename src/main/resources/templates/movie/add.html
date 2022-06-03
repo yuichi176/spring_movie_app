@@ -20,9 +20,9 @@
                         <p>ジャンル</p>
                         <p th:if="${#fields.hasErrors('movieGenre')}" th:errors="*{movieGenre}" th:errorclass="err" ></p>
                         <select class="input-area" th:field="*{movieGenre}">
-                            <option value="action">action</option>
-                            <option value="SF">SF</option>
-                            <option value="horror">horror</option>
+                            <th:block th:each="genre : ${genres}">
+                                <option th:value="${genre.genreName}" th:text="${genre.genreName}">action</option>
+                            </th:block>
                         </select>
                     </div>
                     <div>
