@@ -16,7 +16,9 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 @Controller
@@ -50,9 +52,6 @@ public class MovieController {
                                  //@PageableDefault(size=10, page=0) Pageable pageable,
                                  ModelAndView modelAndView) {
 
-        List<Genre> genres = this.genreService.find(null);
-        modelAndView.addObject("genres", genres);
-
         List<Movie> movies = null;
         movies = this.movieService.find(accountDetails.getUserId(), null);
         if(movies.isEmpty()) {
@@ -65,6 +64,12 @@ public class MovieController {
             }
             modelAndView.addObject("movies", movies);
         }
+
+        Set<String> genreNames = new HashSet<>();
+        for (Movie movie : movies) {
+            genreNames.add(movie.getMovieGenre());
+        }
+        modelAndView.addObject("genreNames", genreNames);
 
         modelAndView.addObject("allMovieCountMsg", "記録した映画：" + movies.size() + "本");
 
