@@ -718,8 +718,21 @@ footer .footer-wrapper .footer-container .footer-copyright {
 .table-wrapper .table-container .genre-filter-container {
   display: flex;
   justify-content: flex-start;
-  padding-bottom: 10px;
-  padding-left: 50px;
+  margin: 0 50px 10px;
+  overflow-x: auto;
+  /*IE(Internet Explorer)・Microsoft Edgeへの対応*/
+  -ms-overflow-style: none;
+  /*Firefoxへの対応*/
+  scrollbar-width: none;
+  /*Google Chrome、Safariへの対応*/
+}
+.table-wrapper .table-container .genre-filter-container::-webkit-scrollbar {
+  display: none;
+}
+@media screen and (max-width: 520px) {
+  .table-wrapper .table-container .genre-filter-container {
+    margin: 0 0 15px;
+  }
 }
 .table-wrapper .table-container .genre-filter-container .genre-filter-item {
   margin: 0 10px;
@@ -727,13 +740,21 @@ footer .footer-wrapper .footer-container .footer-copyright {
   border-radius: 30px;
   padding: 5px 10px;
   cursor: pointer;
-  width: 60px;
+  width: 104px;
   text-align: center;
   color: #6F6F6F;
+  flex: 0 0 auto;
+  font-size: 13px;
 }
 .table-wrapper .table-container .genre-filter-container .genre-filter-item.active {
   background: black;
   color: white;
+}
+@media screen and (max-width: 520px) {
+  .table-wrapper .table-container .genre-filter-container .genre-filter-item {
+    width: 96px;
+    font-size: 12px;
+  }
 }
 .table-wrapper .table-container .table-row {
   display: flex;

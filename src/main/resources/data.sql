@@ -15,13 +15,28 @@ VALUES ('admin01', '$2a$10$kMKCHYGtNoHq11OHu0tAF.8J80pR0ZIxIvc3E7kdazNPbdEPdB8mW
   movieテーブルのDML
  */
 INSERT INTO movie (user_id, movie_name, add_date, movie_comment, movie_eval, movie_genre)
-VALUES (1, 'Spider man', '2022-05-10', 'good', 4, 'action');
+VALUES (1, 'アイアンマン', '2022-05-10', '最高', 4, 'アクション');
 
 INSERT INTO movie (user_id, movie_name, add_date, movie_comment, movie_eval,  movie_genre)
-VALUES (1, 'Super man', '2022-05-10', 'very good', 5, 'SF');
+VALUES (1, 'キャプテン・アメリカ', '2022-05-10', 'まあまあ', 5, 'アクション');
 
 INSERT INTO movie (user_id, movie_name, add_date, movie_comment, movie_eval,  movie_genre)
-VALUES (1, 'Bat man', '2022-05-10', 'bad', 2, 'horror');
+VALUES (1, 'スターウォーズ', '2022-05-10', 'テキストテキストテキストテキストテキストテキスト', 2, 'SF');
+
+INSERT INTO movie (user_id, movie_name, add_date, movie_comment, movie_eval,  movie_genre)
+VALUES (1, 'ミスタービーン', '2022-05-10', 'まあまあ', 5, 'コメディ');
+
+INSERT INTO movie (user_id, movie_name, add_date, movie_comment, movie_eval,  movie_genre)
+VALUES (1, 'ラ・ラ・ランド', '2022-05-10', 'まあまあ', 5, 'ミュージカル');
+
+INSERT INTO movie (user_id, movie_name, add_date, movie_comment, movie_eval, movie_genre)
+VALUES (2, 'アイアンマン', '2022-05-10', '最高', 4, 'アクション');
+
+INSERT INTO movie (user_id, movie_name, add_date, movie_comment, movie_eval,  movie_genre)
+VALUES (2, 'キャプテン・アメリカ', '2022-05-10', 'まあまあ', 5, 'アクション');
+
+INSERT INTO movie (user_id, movie_name, add_date, movie_comment, movie_eval,  movie_genre)
+VALUES (2, 'アオハライド', '2022-05-10', 'まあまあ', 5, '恋愛');
 
 /**
   genreテーブルのDML

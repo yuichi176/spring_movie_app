@@ -769,8 +769,21 @@ footer {
     .genre-filter-container {
       display: flex;
       justify-content: flex-start;
-      padding-bottom: 10px;
-      padding-left: 50px;
+      margin: 0 50px 10px;
+      overflow-x: auto;
+      /*IE(Internet Explorer)・Microsoft Edgeへの対応*/
+      -ms-overflow-style: none;
+      /*Firefoxへの対応*/
+      scrollbar-width: none;
+
+      /*Google Chrome、Safariへの対応*/
+      &::-webkit-scrollbar{
+        display: none;
+      }
+
+      @include mobile {
+        margin: 0 0 15px;
+      }
 
       .genre-filter-item {
         margin: 0 10px;
@@ -778,13 +791,20 @@ footer {
         border-radius: 30px;
         padding: 5px 10px;
         cursor: pointer;
-        width: 60px;
+        width: 104px;
         text-align: center;
         color: #6F6F6F;
+        flex: 0 0 auto;
+        font-size: 13px;
 
         &.active {
           background: black;
           color: white;
+        }
+
+        @include mobile {
+          width: 96px;
+          font-size: 12px;
         }
       }
 
