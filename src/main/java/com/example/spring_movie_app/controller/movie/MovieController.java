@@ -61,6 +61,9 @@ public class MovieController {
                 if(movie.getMovieComment().length() > 15) {
                     movie.setMovieComment(movie.getMovieComment().substring(0, 16) + "...");
                 }
+                if(movie.getMovieName().length() > 10) {
+                    movie.setMovieName(movie.getMovieName().substring(0, 11) + "...");
+                }
             }
             modelAndView.addObject("movies", movies);
         }
@@ -159,6 +162,8 @@ public class MovieController {
                                 ModelAndView modelAndView) {
 
         if(result.hasErrors()) {
+            List<Genre> genres = this.genreService.find(null);
+            modelAndView.addObject("genres", genres);
             modelAndView.addObject("addForm", movieForm);
             modelAndView.setViewName("movie/add");
             return modelAndView;
@@ -215,6 +220,8 @@ public class MovieController {
                                ModelAndView modelAndView) {
 
         if (result.hasErrors()) {
+            List<Genre> genres = this.genreService.find(null);
+            modelAndView.addObject("genres", genres);
             modelAndView.addObject("editForm", movieForm);
             modelAndView.addObject("movieId", movieId);
             modelAndView.setViewName("movie/edit");
