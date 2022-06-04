@@ -963,6 +963,16 @@ tr .movie-edit-link a {
     margin-bottom: 30px;
   }
 }
+.form-wrapper .form-container section {
+  color: red;
+  margin-bottom: 10px;
+}
+@media screen and (max-width: 520px) {
+  .form-wrapper .form-container section {
+    width: 90%;
+    margin: 0 auto;
+  }
+}
 .form-wrapper .form-container form {
   display: flex;
   flex-direction: column;

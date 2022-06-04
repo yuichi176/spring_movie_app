@@ -7,9 +7,7 @@
         <div class="form-wrapper edit-form-wrapper">
             <div class="form-container edit-form-container">
                 <h1>映画の編集</h1>
-                <div>
-                    <p th:if="${errorMsg != null}" th:text="${errorMsg}"></p>
-                </div>
+                <section th:if="${errorMsg != null}" th:text="${errorMsg}"></section>
                 <form th:action="@{/movie/{movieId}/update(movieId=${movieId})}" method="post" th:object="${editForm}">
                     <div>
                         <p>鑑賞日</p>

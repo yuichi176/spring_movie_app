@@ -1047,6 +1047,16 @@ tr {
       }
     }
 
+    section {
+      color: red;
+      margin-bottom: 10px;
+
+      @include mobile {
+        width: 90%;
+        margin: 0 auto;
+      }
+    }
+
     form {
       display: flex;
       flex-direction: column;

@@ -244,7 +244,16 @@ public class MovieController {
         movie.setUserId(accountDetails.getUserId());
         movie.setMovieId(movieId);
 
-        this.movieService.updateOne(movie);
+        try {
+            this.movieService.updateOne(movie);
+        } catch (DataIntegrityViolationException ex) {
+            List<Genre> genres = this.genreService.find(null);
+            modelAndView.addObject("genres", genres);
+            modelAndView.addObject("editForm", movieForm);
+            modelAndView.addObject("errorMsg", messageSource.getMessage("movie.error.duplicate.userName", movieForm.getMovieName()));
+            modelAndView.setViewName("movie/edit");
+            return modelAndView;
+        }
 
         redirectAttributes.addFlashAttribute("edit_msg",
                 messageSource.getMessage("movie.success.edit", movie.getMovieName()));
