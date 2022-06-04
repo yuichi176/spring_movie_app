@@ -4,9 +4,11 @@ import com.example.spring_movie_app.domain.Genre;
 import com.example.spring_movie_app.domain.Movie;
 import com.example.spring_movie_app.form.MovieForm;
 import com.example.spring_movie_app.helper.MessageSourceHelper;
+import com.example.spring_movie_app.repository.DuplicateKeyException;
 import com.example.spring_movie_app.security.AccountDetails;
 import com.example.spring_movie_app.service.genre.GenreService;
 import com.example.spring_movie_app.service.movie.MovieService;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -173,7 +175,16 @@ public class MovieController {
         Movie movie = movieForm.toEntity();
         movie.setUserId(accountDetails.getUserId());
 
-        this.movieService.add(movie);
+        try {
+            this.movieService.add(movie);
+        } catch (DataIntegrityViolationException ex) {
+            List<Genre> genres = this.genreService.find(null);
+            modelAndView.addObject("genres", genres);
+            modelAndView.addObject("addForm", movieForm);
+            modelAndView.addObject("errorMsg", messageSource.getMessage("movie.error.duplicate.userName", movieForm.getMovieName()));
+            modelAndView.setViewName("movie/add");
+            return modelAndView;
+        }
 
         redirectAttributes.addFlashAttribute("add_msg",
                 messageSource.getMessage("movie.success.add", movie.getMovieName()));

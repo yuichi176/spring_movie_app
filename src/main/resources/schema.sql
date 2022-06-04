@@ -19,7 +19,8 @@ CREATE TABLE IF NOT EXISTS movie(
     movie_comment VARCHAR(255),
     movie_eval INT NOT NULL,
     movie_genre VARCHAR(255) NOT NULL,
-    delete_flag BOOLEAN DEFAULT 0 NOT NULL
+    delete_flag BOOLEAN DEFAULT 0 NOT NULL,
+    UNIQUE (user_id, movie_name)
 );
 
 CREATE TABLE IF NOT EXISTS genre(
