@@ -50,6 +50,9 @@ public class MovieController {
                                  //@PageableDefault(size=10, page=0) Pageable pageable,
                                  ModelAndView modelAndView) {
 
+        List<Genre> genres = this.genreService.find(null);
+        modelAndView.addObject("genres", genres);
+
         List<Movie> movies = null;
         movies = this.movieService.find(accountDetails.getUserId(), null);
         if(movies.isEmpty()) {
@@ -111,6 +114,7 @@ public class MovieController {
     public ModelAndView getDetail(@AuthenticationPrincipal AccountDetails accountDetails,
                                   @PathVariable("movieId") Long movieId,
                                   ModelAndView modelAndView) {
+
         Movie movie = this.movieService.get(movieId);
         modelAndView.addObject("movie", movie);
 
@@ -127,6 +131,7 @@ public class MovieController {
     @GetMapping("/add")
     public ModelAndView getAdd(@AuthenticationPrincipal AccountDetails accountDetails,
                                ModelAndView modelAndView) {
+
         List<Genre> genres = this.genreService.find(null);
         modelAndView.addObject("genres", genres);
 
@@ -175,6 +180,7 @@ public class MovieController {
     public ModelAndView getEdit(@AuthenticationPrincipal AccountDetails accountDetails,
                                 @PathVariable("movieId") Long movieId,
                                 ModelAndView modelAndView) {
+
         List<Genre> genres = this.genreService.find(null);
         modelAndView.addObject("genres", genres);
 
@@ -232,6 +238,7 @@ public class MovieController {
     public ModelAndView delete(@PathVariable("movieId") Long movieId,
                                RedirectAttributes redirectAttributes,
                                ModelAndView modelAndView) {
+
         Movie movie = this.movieService.get(movieId);
 
         this.movieService.deleteOne(movieId);

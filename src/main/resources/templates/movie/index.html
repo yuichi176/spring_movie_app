@@ -26,9 +26,9 @@
                     </div>
                     <ul class="genre-filter-container">
                         <li class="genre-filter-item active" data-filter="all">全て</li>
-                        <li class="genre-filter-item" data-filter="action">action</li>
-                        <li class="genre-filter-item" data-filter="SF">SF</li>
-                        <li class="genre-filter-item" data-filter="horror">horror</li>
+                        <th:block th:each="genre : ${genres}">
+                            <li class="genre-filter-item" th:data-filter="${genre.genreName}" th:text="${genre.genreName}">action</li>
+                        </th:block>
                     </ul>
                     <th:block th:if="${movies} != null">
                         <div class="table-row def-row">
