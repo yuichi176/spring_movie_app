@@ -1,10 +1,14 @@
 package com.example.spring_movie_app.controller.movie;
 
+import com.example.spring_movie_app.domain.Genre;
 import com.example.spring_movie_app.domain.Movie;
 import com.example.spring_movie_app.form.MovieForm;
 import com.example.spring_movie_app.helper.MessageSourceHelper;
+import com.example.spring_movie_app.repository.DuplicateKeyException;
 import com.example.spring_movie_app.security.AccountDetails;
+import com.example.spring_movie_app.service.genre.GenreService;
 import com.example.spring_movie_app.service.movie.MovieService;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -14,7 +18,9 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 @Controller
@@ -23,16 +29,20 @@ public class MovieController {
 
     private final MovieService movieService;
 
+    private final GenreService genreService;
+
     private final MessageSourceHelper messageSource;
 
     /**
      * コンストラクタ
      *
      * @param movieService movieサービス
+     * @param genreService genreサービス
      * @param messageSource メッセージソース
      */
-    public MovieController (MovieService movieService, MessageSourceHelper messageSource) {
+    public MovieController (MovieService movieService, GenreService genreService, MessageSourceHelper messageSource) {
         this.movieService = movieService;
+        this.genreService = genreService;
         this.messageSource = messageSource;
     }
 
@@ -50,12 +60,21 @@ public class MovieController {
             modelAndView.addObject("movies", null);
         } else {
             for (Movie movie : movies) {
-                if(movie.getMovieComment().length() > 20) {
-                    movie.setMovieComment(movie.getMovieComment().substring(0, 21) + "...");
+                if(movie.getMovieComment().length() > 15) {
+                    movie.setMovieComment(movie.getMovieComment().substring(0, 16) + "...");
+                }
+                if(movie.getMovieName().length() > 10) {
+                    movie.setMovieName(movie.getMovieName().substring(0, 11) + "...");
                 }
             }
             modelAndView.addObject("movies", movies);
         }
+
+        Set<String> genreNames = new HashSet<>();
+        for (Movie movie : movies) {
+            genreNames.add(movie.getMovieGenre());
+        }
+        modelAndView.addObject("genreNames", genreNames);
 
         modelAndView.addObject("allMovieCountMsg", "記録した映画：" + movies.size() + "本");
 
@@ -105,6 +124,7 @@ public class MovieController {
     public ModelAndView getDetail(@AuthenticationPrincipal AccountDetails accountDetails,
                                   @PathVariable("movieId") Long movieId,
                                   ModelAndView modelAndView) {
+
         Movie movie = this.movieService.get(movieId);
         modelAndView.addObject("movie", movie);
 
@@ -121,6 +141,10 @@ public class MovieController {
     @GetMapping("/add")
     public ModelAndView getAdd(@AuthenticationPrincipal AccountDetails accountDetails,
                                ModelAndView modelAndView) {
+
+        List<Genre> genres = this.genreService.find(null);
+        modelAndView.addObject("genres", genres);
+
         modelAndView.addObject("addForm", new MovieForm());
 
         modelAndView.addObject("loginUserName", accountDetails.getUserName());
@@ -140,6 +164,8 @@ public class MovieController {
                                 ModelAndView modelAndView) {
 
         if(result.hasErrors()) {
+            List<Genre> genres = this.genreService.find(null);
+            modelAndView.addObject("genres", genres);
             modelAndView.addObject("addForm", movieForm);
             modelAndView.setViewName("movie/add");
             return modelAndView;
@@ -149,7 +175,16 @@ public class MovieController {
         Movie movie = movieForm.toEntity();
         movie.setUserId(accountDetails.getUserId());
 
-        this.movieService.add(movie);
+        try {
+            this.movieService.add(movie);
+        } catch (DataIntegrityViolationException ex) {
+            List<Genre> genres = this.genreService.find(null);
+            modelAndView.addObject("genres", genres);
+            modelAndView.addObject("addForm", movieForm);
+            modelAndView.addObject("errorMsg", messageSource.getMessage("movie.error.duplicate.userName", movieForm.getMovieName()));
+            modelAndView.setViewName("movie/add");
+            return modelAndView;
+        }
 
         redirectAttributes.addFlashAttribute("add_msg",
                 messageSource.getMessage("movie.success.add", movie.getMovieName()));
@@ -166,6 +201,10 @@ public class MovieController {
     public ModelAndView getEdit(@AuthenticationPrincipal AccountDetails accountDetails,
                                 @PathVariable("movieId") Long movieId,
                                 ModelAndView modelAndView) {
+
+        List<Genre> genres = this.genreService.find(null);
+        modelAndView.addObject("genres", genres);
+
         Movie movie = this.movieService.get(movieId);
         // MovieオブジェクトからMovieFormオブジェクトへの変換
         MovieForm movieForm = movie.toForm();
@@ -192,6 +231,8 @@ public class MovieController {
                                ModelAndView modelAndView) {
 
         if (result.hasErrors()) {
+            List<Genre> genres = this.genreService.find(null);
+            modelAndView.addObject("genres", genres);
             modelAndView.addObject("editForm", movieForm);
             modelAndView.addObject("movieId", movieId);
             modelAndView.setViewName("movie/edit");
@@ -203,7 +244,16 @@ public class MovieController {
         movie.setUserId(accountDetails.getUserId());
         movie.setMovieId(movieId);
 
-        this.movieService.updateOne(movie);
+        try {
+            this.movieService.updateOne(movie);
+        } catch (DataIntegrityViolationException ex) {
+            List<Genre> genres = this.genreService.find(null);
+            modelAndView.addObject("genres", genres);
+            modelAndView.addObject("editForm", movieForm);
+            modelAndView.addObject("errorMsg", messageSource.getMessage("movie.error.duplicate.userName", movieForm.getMovieName()));
+            modelAndView.setViewName("movie/edit");
+            return modelAndView;
+        }
 
         redirectAttributes.addFlashAttribute("edit_msg",
                 messageSource.getMessage("movie.success.edit", movie.getMovieName()));
@@ -220,6 +270,7 @@ public class MovieController {
     public ModelAndView delete(@PathVariable("movieId") Long movieId,
                                RedirectAttributes redirectAttributes,
                                ModelAndView modelAndView) {
+
         Movie movie = this.movieService.get(movieId);
 
         this.movieService.deleteOne(movieId);

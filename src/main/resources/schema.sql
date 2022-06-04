@@ -1,5 +1,6 @@
 DROP TABLE IF EXISTS account;
 DROP TABLE IF EXISTS movie;
+DROP TABLE IF EXISTS genre;
 DROP TABLE IF EXISTS zipcode;
 
 CREATE TABLE IF NOT EXISTS account(
@@ -8,7 +9,7 @@ CREATE TABLE IF NOT EXISTS account(
     password CHAR(60) NOT NULL,
     role_id CHAR(1) DEFAULT 1 NOT NULL,
     delete_flag BOOLEAN DEFAULT 0 NOT NULL
-    );
+);
 
 CREATE TABLE IF NOT EXISTS movie(
     movie_id BIGINT AUTO_INCREMENT NOT NULL PRIMARY KEY,
@@ -18,5 +19,12 @@ CREATE TABLE IF NOT EXISTS movie(
     movie_comment VARCHAR(255),
     movie_eval INT NOT NULL,
     movie_genre VARCHAR(255) NOT NULL,
-    delete_flag BOOLEAN DEFAULT 0 NOT NULL
+    delete_flag BOOLEAN DEFAULT 0 NOT NULL,
+    UNIQUE (user_id, movie_name)
 );
+
+CREATE TABLE IF NOT EXISTS genre(
+    genre_id BIGINT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    genre_name VARCHAR(255) NOT NULL,
+    delete_flag BOOLEAN DEFAULT 0 NOT NULL
+)

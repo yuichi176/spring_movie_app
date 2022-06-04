@@ -716,7 +716,7 @@ footer {
       justify-content: space-between;
       align-items: center;
       color: #6F6F6F;
-      padding: 30px 60px;
+      padding: 30px 60px 25px;
 
       @include mobile {
         padding: 0;
@@ -766,9 +766,53 @@ footer {
       }
     }
 
+    .genre-filter-container {
+      display: flex;
+      justify-content: flex-start;
+      margin: 0 50px 10px;
+      overflow-x: auto;
+      /*IE(Internet Explorer)・Microsoft Edgeへの対応*/
+      -ms-overflow-style: none;
+      /*Firefoxへの対応*/
+      scrollbar-width: none;
+
+      /*Google Chrome、Safariへの対応*/
+      &::-webkit-scrollbar{
+        display: none;
+      }
+
+      @include mobile {
+        margin: 0 0 15px;
+      }
+
+      .genre-filter-item {
+        margin: 0 10px;
+        border: solid 1px #dadada;
+        border-radius: 30px;
+        padding: 5px 10px;
+        cursor: pointer;
+        width: 104px;
+        text-align: center;
+        color: #6F6F6F;
+        flex: 0 0 auto;
+        font-size: 13px;
+
+        &.active {
+          background: black;
+          color: white;
+        }
+
+        @include mobile {
+          width: 96px;
+          font-size: 12px;
+        }
+      }
+
+    }
+
     .table-row {
       display: flex;
-      border-bottom: solid 1px #C7C7C7;
+      border-bottom: solid 1px #ebebeb;
       padding: 25px 0;
       position: relative;
 
@@ -798,7 +842,7 @@ footer {
 
       &.def-row {
         color: #6F6F6F;
-        border-top: solid 1px #C7C7C7;
+        border-top: solid 1px #ebebeb;
 
         @include mobile {
           padding: 15px;
@@ -806,12 +850,29 @@ footer {
       }
 
       &.movie-row {
+        display: none;
+
+        &.show {
+          display: flex;
+          //animation: .5s fade-in;
+        }
+
+        //@keyframes fade-in {
+        //  0% {
+        //    opacity: 0.3;
+        //    transform: translateY(15px);
+        //  }
+        //  100% {
+        //    opacity: 1;
+        //    transform: none;
+        //  }
+        //}
 
         &:last-child {
           border-bottom: none;
 
           @include mobile {
-            border-bottom: solid 1px #C7C7C7;
+            border-bottom: solid 1px #ebebeb;
           }
         }
       }
@@ -983,6 +1044,16 @@ tr {
         font-size: 23px;
         text-align: center;
         margin-bottom: 30px;
+      }
+    }
+
+    section {
+      color: red;
+      margin-bottom: 10px;
+
+      @include mobile {
+        width: 90%;
+        margin: 0 auto;
       }
     }
 

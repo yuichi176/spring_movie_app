@@ -7,9 +7,7 @@
         <div class="form-wrapper add-form-wrapper">
             <div class="form-container add-form-container">
                 <h1>映画の登録</h1>
-                <div>
-                    <p th:if="${errorMsg != null}" th:text="${errorMsg}"></p>
-                </div>
+                <section th:if="${errorMsg != null}" th:text="${errorMsg}"></section>
                 <form th:action="@{/movie/add}" method="post" th:object="${addForm}">
                     <div>
                         <p>鑑賞日</p>
@@ -20,9 +18,9 @@
                         <p>ジャンル</p>
                         <p th:if="${#fields.hasErrors('movieGenre')}" th:errors="*{movieGenre}" th:errorclass="err" ></p>
                         <select class="input-area" th:field="*{movieGenre}">
-                            <option value="action">action</option>
-                            <option value="SF">SF</option>
-                            <option value="horror">horror</option>
+                            <th:block th:each="genre : ${genres}">
+                                <option th:value="${genre.genreName}" th:text="${genre.genreName}">action</option>
+                            </th:block>
                         </select>
                     </div>
                     <div>
