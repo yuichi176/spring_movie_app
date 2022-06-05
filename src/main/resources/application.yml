@@ -4,9 +4,9 @@ spring:
       ddl-auto: none
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/spring_movie_app
-    username: springuser
-    password: ThePassword
+    url: jdbc:mysql://us-cdbr-east-05.cleardb.net:3306/heroku_15bc9c8f4def4a7
+    username: b5914dead743dd
+    password: fc0a2a63
   sql:
     init:
       mode: always
@@ -18,9 +18,9 @@ mybatis:
 
 dbcp2.jdbc:
   driver-class-name: com.mysql.cj.jdbc.Driver
-  url: jdbc:mysql://localhost:3306/spring_movie_app
-  username: springuser
-  password: ThePassword
+  url: jdbc:mysql://us-cdbr-east-05.cleardb.net:3306/heroku_15bc9c8f4def4a7
+  username: b5914dead743dd
+  password: fc0a2a63
   initial-size: 1
   max-idle: 20
   min-idle: 10
