@@ -10,10 +10,6 @@
         <section class="edit_msg" th:if="${edit_msg != null}" th:text="${edit_msg}"></section>
         <section class="delete_msg" th:if="${delete_msg != null}" th:text="${delete_msg}"></section>
         <div class="movie-list-page-container">
-            <form class="search-form" method="get" th:action="@{/movie/search}">
-                <input type="text" placeholder="映画名で検索" id="keyword" name="keyword" th:value="${keyword}">
-                <input type="submit" value="&#xf002">
-            </form>
             <div class="table-wrapper">
                 <div class="table-container">
                     <div class="table-header">
@@ -24,6 +20,10 @@
                             <span>登録</span>
                         </a>
                     </div>
+                    <form class="search-form" method="get" th:action="@{/movie/search}">
+                        <input type="text" placeholder="映画名で検索" id="keyword" name="keyword" th:value="${keyword}">
+                        <input type="submit" value="&#xf002">
+                    </form>
                     <ul th:if="${movies} != null and ${searchResultMsg} == null" class="genre-filter-container">
                         <li class="genre-filter-item active" data-filter="all">全て</li>
                         <th:block th:each="genreName : ${genreNames}">
@@ -58,7 +58,10 @@
             </div>
         </div>
     </main>
+    <!--スクロールボタン-->
+    <button id="page-top" class="page-top"></button>
     <footer th:replace="common/footer :: footer_fragment"></footer>
     <script th:src="@{/js/genreFilter.js}"></script>
+    <script th:src="@{/js/scroll.js}"></script>
     </body>
 </html>

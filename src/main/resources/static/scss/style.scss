@@ -100,10 +100,20 @@ header {
           padding-left: 50px;
           font-size: 15px;
 
+          a {
+            &:hover {
+              opacity: 0.8;
+            }
+          }
+
           input[type="submit"] {
             background: white;
             border: none;
             cursor: pointer;
+
+            &:hover {
+              opacity: 0.6;
+            }
           }
         }
       }
@@ -315,6 +325,10 @@ footer {
     color: white;
     top: 33%;
 
+    @include mobile {
+      top: 35%;
+    }
+
     h2 {
       font-size: 45px;
 
@@ -354,7 +368,7 @@ footer {
     justify-content: center;
 
     @include mobile {
-      top: 51%;
+      top: 54%;
     }
 
     .btn-border {
@@ -367,7 +381,8 @@ footer {
 
       @include mobile {
         font-size: 15px;
-        margin: 0 30px;
+        margin: 0 20px;
+        padding: 0 20px;
       }
 
       &:before,
@@ -379,6 +394,10 @@ footer {
         content: '';
         transition: all .3s;
         background: white;
+
+        @include mobile {
+          height: 1px;
+        }
       }
 
       &:before {
@@ -578,6 +597,10 @@ footer {
             color: #81a3e3;
             text-decoration: underline;
 
+            &:hover {
+              opacity: 0.8;
+            }
+
             @include mobile {
               font-size: 15px;
             }
@@ -640,7 +663,7 @@ footer {
   flex-direction: column;
   align-items: center;
   width: 80%;
-  margin: 40px auto;
+  margin: 40px auto 60px;
   z-index: 10;
 
   @include mobile {
@@ -660,10 +683,12 @@ footer {
   overflow: hidden;
   background: white;
   align-self: flex-start;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+  margin-left: 55px;
 
   @include mobile {
     width: 100%;
+    margin-left: 0;
   }
 
   input[type="text"] {
@@ -690,8 +715,6 @@ footer {
     top: -10px;
     outline : none;
   }
-
-
 }
 
 .table-wrapper {
@@ -745,6 +768,10 @@ footer {
         align-items: center;
         cursor: pointer;
 
+        &:hover {
+          opacity: 0.8;
+        }
+
         @include mobile {
           width: 100px;
           height: 40px;
@@ -769,7 +796,7 @@ footer {
     .genre-filter-container {
       display: flex;
       justify-content: flex-start;
-      margin: 0 50px 10px;
+      margin: 0 50px 20px;
       overflow-x: auto;
       /*IE(Internet Explorer)・Microsoft Edgeへの対応*/
       -ms-overflow-style: none;
@@ -798,6 +825,12 @@ footer {
         font-size: 13px;
 
         &.active {
+          background: black;
+          color: white;
+        }
+
+        &:hover {
+          transition: all .5s;
           background: black;
           color: white;
         }
@@ -904,9 +937,6 @@ footer {
   }
 }
 
-
-
-
 tr {
   position: relative;
 
@@ -988,16 +1018,20 @@ tr {
     a {
       align-self: flex-end;
       font-weight: bolder;
-      font-size: 20px;
-      width: 150px;
-      background: $btn-color;
+      font-size: 18px;
+      width: 140px;
+      background: #BFBFFF;
       color: white;
-      border-radius: 3px;
+      border-radius: 10px;
       border: none;
       cursor: pointer;
       margin-top: 40px;
-      padding: 6px 0;
+      padding: 10px 0;
       text-align: center;
+
+      &:hover {
+        opacity: 0.8;
+      }
 
       @include mobile {
         font-size: 16px;
@@ -1129,15 +1163,19 @@ tr {
       input[type="submit"] {
         align-self: flex-end;
         font-weight: bolder;
-        font-size: 20px;
-        width: 150px;
+        font-size: 18px;
+        width: 130px;
         height: 50px;
         background: $btn-color;
         color: white;
-        border-radius: 3px;
+        border-radius: 15px;
         border: none;
         cursor: pointer;
         margin-top: 20px;
+
+        &:hover {
+          opacity: 0.8;
+        }
 
         @include mobile {
           font-size: 16px;
@@ -1165,17 +1203,21 @@ tr {
 
         a {
           font-weight: bolder;
-          font-size: 20px;
-          width: 150px;
+          font-size: 18px;
+          width: 130px;
           background: #FFBFBF;
           color: white;
-          border-radius: 3px;
+          border-radius: 15px;
           border: none;
           cursor: pointer;
           margin-top: 20px;
           padding: 0;
-          padding-top: 6px;
+          padding-top: 9px;
           text-align: center;
+
+          &:hover {
+            opacity: 0.8;
+          }
 
           @include mobile {
             font-size: 16px;
@@ -1245,3 +1287,51 @@ tr {
 .star5_rating[data-rate="2"]:after{ width: 40%; } /* 星2 */
 .star5_rating[data-rate="1"]:after{ width: 20%; } /* 星1 */
 .star5_rating[data-rate="0"]:after{ width: 0%; } /* 星0 */
+
+/* ボタンのスタイル */
+.page-top {
+  /* buttonタグのリセットCSS */
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  appearance: none;
+
+  /* ボタンの装飾 */
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+  z-index: 100;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: $btn-color;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+
+  pointer-events: none;
+  opacity: 0;
+
+  &.show {
+    pointer-events: auto;
+    opacity: 1;
+  }
+}
+
+/* 矢印のスタイル */
+.page-top::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  margin-bottom: -6px;
+  border-top: solid 3px #fff;
+  border-right: solid 3px #fff;
+  transform: rotate(-45deg);
+}
+
+/* ホバー時のスタイル */
+.page-top:hover {
+  transform: scale(1.1);
+}
