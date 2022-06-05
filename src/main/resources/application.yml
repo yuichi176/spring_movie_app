@@ -9,7 +9,7 @@ spring:
     password: ${DB_PASSWORD}
   sql:
     init:
-      mode: always
+      mode: never
 
 mybatis:
   mapper-locations: classpath:com/example/spring_movie_app/repository/mybatis/*.xml
@@ -21,6 +21,6 @@ dbcp2.jdbc:
   url: jdbc:mysql://${DB_HOST}/${DB_DATABASE}
   username: ${DB_USERNAME}
   password: ${DB_PASSWORD}
-  initial-size: 1
-  max-idle: 20
+  initial-size: 10
+  max-idle: 50
   min-idle: 10
