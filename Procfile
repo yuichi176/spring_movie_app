@@ -1,0 +1,1 @@
+web: java -jar target/spring_movie_app-0.0.1-SNAPSHOT.jar
