@@ -26,8 +26,6 @@ dbcp2.jdbc:
   min-idle: 10
 
 ---
-
-# 本番環境用
 spring:
   profiles: production
   datasource:
