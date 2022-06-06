@@ -4,12 +4,12 @@ spring:
       ddl-auto: none
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://${DB_HOST}/${DB_DATABASE}
-    username: ${DB_USERNAME}
-    password: ${DB_PASSWORD}
+    url: jdbc:mysql://localhost:3306/spring_movie_app
+    username: springuser
+    password: ThePassword
   sql:
     init:
-      mode: never
+      mode: always
 
 mybatis:
   mapper-locations: classpath:com/example/spring_movie_app/repository/mybatis/*.xml
@@ -24,3 +24,22 @@ dbcp2.jdbc:
   initial-size: 10
   max-idle: 50
   min-idle: 10
+
+---
+
+  # 本番環境用
+  spring:
+    jpa:
+      hibernate:
+        ddl-auto: none
+    datasource:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://${DB_HOST}/${DB_DATABASE}
+      username: ${DB_USERNAME}
+      password: ${DB_PASSWORD}
+    sql:
+      init:
+        mode: never
+    config:
+      activate:
+        on-profile:
