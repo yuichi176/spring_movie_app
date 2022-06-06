@@ -29,17 +29,10 @@ dbcp2.jdbc:
 
   # 本番環境用
   spring:
-    jpa:
-      hibernate:
-        ddl-auto: none
     datasource:
-      driver-class-name: com.mysql.cj.jdbc.Driver
       url: jdbc:mysql://${DB_HOST}/${DB_DATABASE}
       username: ${DB_USERNAME}
       password: ${DB_PASSWORD}
     sql:
       init:
         mode: never
-    config:
-      activate:
-        on-profile:
