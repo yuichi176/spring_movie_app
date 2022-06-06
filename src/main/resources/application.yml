@@ -29,6 +29,7 @@ dbcp2.jdbc:
 
   # 本番環境用
   spring:
+    profiles: production
     datasource:
       url: jdbc:mysql://${DB_HOST}/${DB_DATABASE}
       username: ${DB_USERNAME}
