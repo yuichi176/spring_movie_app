@@ -231,7 +231,7 @@ footer {
 }
 @media screen and (max-width: 520px) {
   footer {
-    height: 150px;
+    height: 110px;
   }
 }
 @media screen and (max-width: 520px) {
@@ -247,7 +247,7 @@ footer .footer-wrapper .footer-container {
 }
 @media screen and (max-width: 520px) {
   footer .footer-wrapper .footer-container {
-    padding-top: 70px;
+    padding-top: 25px;
   }
 }
 footer .footer-wrapper .footer-container .footer-logo {
@@ -279,7 +279,7 @@ footer .footer-wrapper .footer-container .footer-copyright {
 }
 @media screen and (max-width: 520px) {
   .header-img-wrapper {
-    height: calc(100vh - 100px);
+    height: calc(90vh - 100px);
   }
 }
 .header-img-wrapper .text-wrapper {
@@ -292,7 +292,7 @@ footer .footer-wrapper .footer-container .footer-copyright {
 }
 @media screen and (max-width: 520px) {
   .header-img-wrapper .text-wrapper {
-    top: 35%;
+    top: 33%;
   }
 }
 .header-img-wrapper .text-wrapper h2 {
@@ -300,7 +300,7 @@ footer .footer-wrapper .footer-container .footer-copyright {
 }
 @media screen and (max-width: 520px) {
   .header-img-wrapper .text-wrapper h2 {
-    font-size: 30px;
+    font-size: 25px;
     margin-bottom: 10px;
   }
 }
@@ -309,7 +309,7 @@ footer .footer-wrapper .footer-container .footer-copyright {
 }
 @media screen and (max-width: 520px) {
   .header-img-wrapper .text-wrapper h4 {
-    font-size: 20px;
+    font-size: 17px;
   }
 }
 .header-img-wrapper .img-wrapper {
