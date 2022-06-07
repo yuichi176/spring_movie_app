@@ -26,9 +26,11 @@ dbcp2.jdbc:
   min-idle: 10
 
 ---
+
 spring:
   profiles: production
   datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://${DB_HOST}/${DB_DATABASE}
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
