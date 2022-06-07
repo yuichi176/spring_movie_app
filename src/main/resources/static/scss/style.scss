@@ -896,11 +896,16 @@ footer {
 
         @include mobile {
           padding: 15px;
+          font-size: 13px;
         }
       }
 
       &.movie-row {
         display: none;
+
+        @include mobile {
+          font-size: 13px;
+        }
 
         &.show {
           display: flex;

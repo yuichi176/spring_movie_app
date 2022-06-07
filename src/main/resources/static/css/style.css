@@ -837,10 +837,16 @@ footer .footer-wrapper .footer-container .footer-copyright {
 @media screen and (max-width: 520px) {
   .table-wrapper .table-container .table-row.def-row {
     padding: 15px;
+    font-size: 13px;
   }
 }
 .table-wrapper .table-container .table-row.movie-row {
   display: none;
+}
+@media screen and (max-width: 520px) {
+  .table-wrapper .table-container .table-row.movie-row {
+    font-size: 13px;
+  }
 }
 .table-wrapper .table-container .table-row.movie-row.show {
   display: flex;
