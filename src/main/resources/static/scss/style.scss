@@ -266,7 +266,7 @@ footer {
   background: #fff;
 
   @include mobile {
-    height: 150px;
+    height: 110px;
   }
 
   .footer-wrapper {
@@ -282,7 +282,7 @@ footer {
       padding-top: 50px;
 
       @include mobile {
-        padding-top: 70px;
+        padding-top: 25px;
       }
 
       .footer-logo {
@@ -314,7 +314,7 @@ footer {
   height: 800px;
 
   @include mobile {
-    height: calc(100vh - 100px);
+    height: calc(90vh - 100px);
   }
 
   .text-wrapper {
@@ -326,14 +326,14 @@ footer {
     top: 33%;
 
     @include mobile {
-      top: 35%;
+      top: 33%;
     }
 
     h2 {
       font-size: 45px;
 
       @include mobile {
-        font-size: 30px;
+        font-size: 25px;
         margin-bottom: 10px;
       }
     }
@@ -342,7 +342,7 @@ footer {
       font-size: 28px;
 
       @include mobile {
-        font-size: 20px;
+        font-size: 17px;
       }
     }
   }
