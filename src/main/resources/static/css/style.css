@@ -131,7 +131,7 @@ header .sp-header-wrapper .sp-header-container .menu-btn {
 }
 header .sp-header-wrapper .sp-header-container .nav-global {
   display: flex;
-  padding-top: 12px;
+  padding-top: 7px;
 }
 header .sp-header-wrapper .sp-header-container .nav-global .nav-global-item {
   padding-left: 25px;
@@ -407,7 +407,7 @@ footer .footer-wrapper .footer-container .footer-copyright {
     margin: 50px auto;
     width: 80%;
     box-shadow: none;
-    height: 430px;
+    height: auto;
   }
 }
 .wide-form-wrapper .wide-form-container {
@@ -472,6 +472,7 @@ footer .footer-wrapper .footer-container .footer-copyright {
   .wide-form-wrapper .wide-form-container .wide-form-content section {
     width: 90%;
     margin: 0 auto;
+    font-size: 13px;
   }
 }
 @media screen and (max-width: 520px) {

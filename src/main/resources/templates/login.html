@@ -12,7 +12,7 @@
                 </div>
                 <div class="wide-form-content">
                     <h1>ログイン</h1>
-                    <section th:if="${param.error}">ユーザ名、またはパスワードが正しくありません</section>
+                    <section th:if="${param.error}">ユーザ名、またはパスワードが正しくありません。</section>
                     <form th:action="@{/login}" method="post">
                         <div>
                             <p class="form_name">User Name</p>

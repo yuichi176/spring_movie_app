@@ -157,7 +157,7 @@ header {
 
       .nav-global {
         display: flex;
-        padding-top: 12px;
+        padding-top: 7px;
 
         .nav-global-item {
           padding-left: 25px;
@@ -449,7 +449,7 @@ footer {
     margin: 50px auto;
     width: 80%;
     box-shadow: none;
-    height: 430px;
+    height: auto;
   }
 
   .wide-form-container {
@@ -514,6 +514,7 @@ footer {
         @include mobile {
           width: 90%;
           margin: 0 auto;
+          font-size: 13px;
         }
       }
 
