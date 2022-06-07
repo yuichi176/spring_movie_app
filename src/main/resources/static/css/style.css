@@ -85,9 +85,6 @@ header .pc-header-wrapper .pc-header-container .nav-global .nav-global-item {
   padding-left: 50px;
   font-size: 15px;
 }
-header .pc-header-wrapper .pc-header-container .nav-global .nav-global-item:first-child {
-  padding-top: 3px;
-}
 header .pc-header-wrapper .pc-header-container .nav-global .nav-global-item a:hover {
   opacity: 0.8;
 }
@@ -1067,6 +1064,8 @@ tr .movie-edit-link a {
   .form-wrapper .form-container form input[type=date] {
     width: 50%;
     height: 25px;
+    color: black;
+    background: white;
   }
 }
 .form-wrapper .form-container form select {
@@ -1079,6 +1078,8 @@ tr .movie-edit-link a {
   .form-wrapper .form-container form select {
     width: 50%;
     height: 35px;
+    color: black;
+    background: white;
   }
 }
 .form-wrapper .form-container form input[type=text] {

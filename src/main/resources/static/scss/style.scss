@@ -100,10 +100,6 @@ header {
           padding-left: 50px;
           font-size: 15px;
 
-          &:first-child {
-            padding-top: 3px;
-          }
-
           a {
             &:hover {
               opacity: 0.8;
@@ -1151,6 +1147,8 @@ tr {
         @include mobile {
           width: 50%;
           height: 25px;
+          color: black;
+          background: white;
         }
       }
 
@@ -1163,6 +1161,8 @@ tr {
         @include mobile {
           width: 50%;
           height: 35px;
+          color: black;
+          background: white;
         }
       }
 
