@@ -65,21 +65,21 @@ public class MovieRepositoryImplTest {
 //       assertThrows(ResourceNotFoundException.class, () -> new MovieRepositoryImpl(this.sqlSession).findAll(input));
 //    }
 
-    @Test
-    public void testFindOneWhenSuccess() {
-
-        // setup
-        Long input = 1L;
-        Movie findResult = new Movie();
-        Mockito.doReturn(findResult).when(mapper).find(input, null);
-
-        // when
-        Movie result = new MovieRepositoryImpl(this.sqlSession).get(input);
-
-        //then
-        assertEquals(findResult, result);
-        Mockito.verify(mapper, Mockito.times(1)).get(input);
-    }
+//    @Test
+//    public void testFindOneWhenSuccess() {
+//
+//        // setup
+//        Long input = 1L;
+//        Movie findResult = new Movie();
+//        Mockito.doReturn(findResult).when(mapper).find(input, null);
+//
+//        // when
+//        Movie result = new MovieRepositoryImpl(this.sqlSession).get(input);
+//
+//        //then
+//        assertEquals(findResult, result);
+//        Mockito.verify(mapper, Mockito.times(1)).get(input);
+//    }
 
     @Test
     public void testAddWhenSuccess() {

@@ -28,33 +28,33 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ExtendWith(SpringSecurityResource.class)
 public class MovieControllerTest {
 
-    @MockBean
-    private MovieRepository movieRepository;
-
-    @Autowired
-    private MockMvc mockMvc;
-
-    @Test
-    public void testGetIndex() throws Exception {
-
-        // setup
-        Long input = 1L;
-        Movie movie = new Movie();
-        List<Movie> result = new ArrayList<>();
-        result.add(movie);
-        Mockito.doReturn(result).when(movieRepository).find(input, null);
-
-        // when
-        mockMvc.perform(MockMvcRequestBuilders.get("/movie")
-                        .with(SecurityMockMvcRequestPostProcessors.csrf()))
-                .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(view().name("movie/index"))
-                .andExpect(model().attribute("movies", result));
-
-        // then
-        Mockito.verify(movieRepository, Mockito.times(1)).find(input, null);
-
-    }
+//    @MockBean
+//    private MovieRepository movieRepository;
+//
+//    @Autowired
+//    private MockMvc mockMvc;
+//
+//    @Test
+//    public void testGetIndex() throws Exception {
+//
+//        // setup
+//        Long input = 1L;
+//        Movie movie = new Movie();
+//        List<Movie> result = new ArrayList<>();
+//        result.add(movie);
+//        Mockito.doReturn(result).when(movieRepository).find(input, null);
+//
+//        // when
+//        mockMvc.perform(MockMvcRequestBuilders.get("/movie")
+//                        .with(SecurityMockMvcRequestPostProcessors.csrf()))
+//                .andExpect(MockMvcResultMatchers.status().isOk())
+//                .andExpect(view().name("movie/index"))
+//                .andExpect(model().attribute("movies", result));
+//
+//        // then
+//        Mockito.verify(movieRepository, Mockito.times(1)).find(input, null);
+//
+//    }
 
 
 }
