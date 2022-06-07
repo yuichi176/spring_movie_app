@@ -913,7 +913,7 @@ tr .movie-edit-link a {
 @media screen and (max-width: 520px) {
   .detail-wrapper {
     margin: 50px auto;
-    padding: 40px 10px;
+    padding: 25px 10px;
   }
 }
 .detail-wrapper .detail-container {
@@ -922,9 +922,9 @@ tr .movie-edit-link a {
   justify-content: flex-start;
 }
 .detail-wrapper .detail-container h1 {
-  font-size: 25px;
+  font-size: 20px;
   font-weight: bold;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
 }
 @media screen and (max-width: 520px) {
   .detail-wrapper .detail-container h1 {
@@ -972,11 +972,12 @@ tr .movie-edit-link a {
 }
 @media screen and (max-width: 520px) {
   .detail-wrapper .detail-container a {
-    font-size: 16px;
+    font-size: 15px;
     width: 80%;
-    height: 35px;
+    height: 30px;
     align-self: center;
     padding-top: 12px;
+    margin-top: 25px;
   }
 }
 
@@ -1136,6 +1137,7 @@ tr .movie-edit-link a {
 @media screen and (max-width: 520px) {
   .form-wrapper .form-container form .btn-wrap input[type=submit] {
     width: 30%;
+    margin-right: 30px;
   }
 }
 .form-wrapper .form-container form .btn-wrap a {
@@ -1157,6 +1159,8 @@ tr .movie-edit-link a {
 }
 @media screen and (max-width: 520px) {
   .form-wrapper .form-container form .btn-wrap a {
+    border-radius: 25px;
+    padding-top: 7px;
     font-size: 16px;
     width: 30%;
   }

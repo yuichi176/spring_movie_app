@@ -991,7 +991,7 @@ tr {
 
   @include mobile {
     margin: 50px auto;
-    padding: 40px 10px;
+    padding: 25px 10px;
   }
 
   .detail-container {
@@ -1000,9 +1000,9 @@ tr {
     justify-content: flex-start;
 
     h1 {
-      font-size: 25px;
+      font-size: 20px;
       font-weight: bold;
-      margin-bottom: 30px;
+      margin-bottom: 25px;
 
       @include mobile {
         font-size: 23px;
@@ -1053,11 +1053,12 @@ tr {
       }
 
       @include mobile {
-        font-size: 16px;
+        font-size: 15px;
         width: 80%;
-        height: 35px;
+        height: 30px;
         align-self: center;
         padding-top: 12px;
+        margin-top: 25px;
       }
     }
   }
@@ -1221,6 +1222,7 @@ tr {
 
           @include mobile {
             width: 30%;
+            margin-right: 30px;
           }
         }
 
@@ -1243,6 +1245,8 @@ tr {
           }
 
           @include mobile {
+            border-radius: 25px;
+            padding-top: 7px;
             font-size: 16px;
             width: 30%;
           }
