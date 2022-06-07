@@ -94,11 +94,15 @@ header {
 
       .nav-global {
         display: flex;
-        padding-top: 25px;
+        padding-top: 12px;
 
         .nav-global-item {
           padding-left: 50px;
           font-size: 15px;
+
+          &:first-child {
+            padding-top: 3px;
+          }
 
           a {
             &:hover {
@@ -107,9 +111,12 @@ header {
           }
 
           input[type="submit"] {
-            background: white;
+            background: #999999;
+            color: white;
             border: none;
             cursor: pointer;
+            padding: 5px 15px;
+            border-radius: 25px;
 
             &:hover {
               opacity: 0.6;
@@ -150,15 +157,19 @@ header {
 
       .nav-global {
         display: flex;
-        padding-top: 15px;
+        padding-top: 12px;
 
         .nav-global-item {
           padding-left: 25px;
           font-size: 14px;
 
           input[type="submit"] {
-            background: white;
+            background: #999999;
+            color: white;
             border: none;
+            cursor: pointer;
+            padding: 5px 15px;
+            border-radius: 25px;
           }
         }
       }
@@ -544,6 +555,7 @@ footer {
           @include mobile {
             width: 100%;
             height: 35px;
+            font-size: 15px;
           }
         }
 
@@ -561,6 +573,7 @@ footer {
             width: 100%;
             height: 35px;
             margin-bottom: 50px;
+            font-size: 15px;
           }
         }
 
