@@ -24,6 +24,7 @@
                 AND movie_name LIKE CONCAT('%', #{keyword}, '%')
             </if>
         </where>
+        ORDER BY add_date DESC
     </select>
 
     <select id="get" resultMap="Movie">
