@@ -1,2 +1,2 @@
 # spring_movie_app
-hello
+This app enable you to record the movie you watched.
